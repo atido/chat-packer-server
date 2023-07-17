@@ -1,0 +1,3416 @@
+{
+  "context": {
+    "status": "complete",
+    "sessionId": "89e05560-4f5c-43e8-a092-b7dbb980c2b7",
+    "totalResults": 294
+  },
+  "messages": [
+    {
+      "header": "About our flight search",
+      "body": "We rank our 'Best' flights by balancing price with factors such as duration and stops. Some airlines and travel agents pay us for passing travellers to their sites, but this never affects how we rank results. We put all our efforts into finding the most relevant results but we can’t always show every available option.",
+      "buttonText": "Learn more",
+      "url": "https://mobile.ds.skyscanner.net/sttc/widget-static-content/frenchregulation/en-gb/about_ranking_v04.html",
+      "purpose": "FR_REGS"
+    }
+  ],
+  "itineraries": {
+    "buckets": [
+      {
+        "id": "Best",
+        "name": "Best",
+        "items": [
+          {
+            "id": "10413-2310111535--32348-1-16201-2310120650|16201-2310200815--32348-1-10413-2310202000",
+            "price": {
+              "raw": 906,
+              "formatted": "906 €"
+            },
+            "legs": [
+              {
+                "id": "10413-2310111535--32348-1-16201-2310120650",
+                "origin": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 795,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-11T15:35:00",
+                "arrival": "2023-10-12T06:50:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "10413-11182-2310111535-2310120020--32348",
+                    "origin": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-11T15:35:00",
+                    "arrival": "2023-10-12T00:20:00",
+                    "durationInMinutes": 405,
+                    "flightNumber": "74",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-16201-2310120215-2310120650--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-12T02:15:00",
+                    "arrival": "2023-10-12T06:50:00",
+                    "durationInMinutes": 275,
+                    "flightNumber": "705",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "16201-2310200815--32348-1-10413-2310202000",
+                "origin": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 825,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-20T08:15:00",
+                "arrival": "2023-10-20T20:00:00",
+                "timeDeltaInDays": 0,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "16201-11182-2310200815-2310201245--32348",
+                    "origin": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T08:15:00",
+                    "arrival": "2023-10-20T12:45:00",
+                    "durationInMinutes": 270,
+                    "flightNumber": "706",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-10413-2310201440-2310202000--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T14:40:00",
+                    "arrival": "2023-10-20T20:00:00",
+                    "durationInMinutes": 440,
+                    "flightNumber": "75",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              }
+            ],
+            "isSelfTransfer": false,
+            "isProtectedSelfTransfer": false,
+            "farePolicy": {
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isCancellationAllowed": false,
+              "isPartiallyRefundable": false
+            },
+            "baggage": {
+              "bagsIncluded": 1,
+              "priceProvidedForBag": false,
+              "priceForBag": 0
+            },
+            "fareAttributes": {},
+            "tags": ["third_shortest"],
+            "isMashUp": false,
+            "hasFlexibleOptions": false,
+            "score": 0.937359,
+            "pricingOptions": [
+              {
+                "agentIds": ["atfr"],
+                "price": {
+                  "amount": 906
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 906
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "atfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["gtfr"],
+                "price": {
+                  "amount": 908.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 908.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "gtfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["lmfr"],
+                "price": {
+                  "amount": 909.36
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 909.36
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "lmfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["ctfr"],
+                "price": {
+                  "amount": 913.05
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 913.05
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "ctfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["gofr"],
+                "price": {
+                  "amount": 916.23
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 916.23
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "gofr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["edfr"],
+                "price": {
+                  "amount": 921.51
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 921.51
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "edfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["mtfr"],
+                "price": {
+                  "amount": 921.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 921.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "mtfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["bcfr"],
+                "price": {
+                  "amount": 923.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 923.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "bcfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["emir"],
+                "price": {
+                  "amount": 936.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 936.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "emir"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["opfr"],
+                "price": {
+                  "amount": 936.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 936.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "opfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["xpfr"],
+                "price": {
+                  "amount": 936.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 936.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "xpfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["skyp"],
+                "price": {
+                  "amount": 997
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 997
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "skyp"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["bffr"],
+                "price": {
+                  "amount": 1136.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1136.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "bffr"
+                  }
+                ]
+              }
+            ],
+            "deeplink": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310111535--32348-1-16201-2310120650|16201-2310200815--32348-1-10413-2310202000?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1"
+          },
+          {
+            "id": "10413-2310112155--32348-1-16201-2310121335|16201-2310200815--32348-1-10413-2310202000",
+            "price": {
+              "raw": 906,
+              "formatted": "906 €"
+            },
+            "legs": [
+              {
+                "id": "10413-2310112155--32348-1-16201-2310121335",
+                "origin": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 820,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-11T21:55:00",
+                "arrival": "2023-10-12T13:35:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "10413-11182-2310112155-2310120635--32348",
+                    "origin": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-11T21:55:00",
+                    "arrival": "2023-10-12T06:35:00",
+                    "durationInMinutes": 400,
+                    "flightNumber": "76",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-16201-2310120855-2310121335--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-12T08:55:00",
+                    "arrival": "2023-10-12T13:35:00",
+                    "durationInMinutes": 280,
+                    "flightNumber": "707",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "16201-2310200815--32348-1-10413-2310202000",
+                "origin": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 825,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-20T08:15:00",
+                "arrival": "2023-10-20T20:00:00",
+                "timeDeltaInDays": 0,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "16201-11182-2310200815-2310201245--32348",
+                    "origin": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T08:15:00",
+                    "arrival": "2023-10-20T12:45:00",
+                    "durationInMinutes": 270,
+                    "flightNumber": "706",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-10413-2310201440-2310202000--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T14:40:00",
+                    "arrival": "2023-10-20T20:00:00",
+                    "durationInMinutes": 440,
+                    "flightNumber": "75",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              }
+            ],
+            "isSelfTransfer": false,
+            "isProtectedSelfTransfer": false,
+            "farePolicy": {
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isCancellationAllowed": false,
+              "isPartiallyRefundable": false
+            },
+            "baggage": {
+              "bagsIncluded": 1,
+              "priceProvidedForBag": false,
+              "priceForBag": 0
+            },
+            "fareAttributes": {},
+            "isMashUp": false,
+            "hasFlexibleOptions": false,
+            "score": 0.923113,
+            "pricingOptions": [
+              {
+                "agentIds": ["atfr"],
+                "price": {
+                  "amount": 906
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 906
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "atfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["gtfr"],
+                "price": {
+                  "amount": 908.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 908.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "gtfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["lmfr"],
+                "price": {
+                  "amount": 909.36
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 909.36
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "lmfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["ctfr"],
+                "price": {
+                  "amount": 913.05
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 913.05
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "ctfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["gofr"],
+                "price": {
+                  "amount": 916.23
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 916.23
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "gofr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["edfr"],
+                "price": {
+                  "amount": 921.51
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 921.51
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "edfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["mtfr"],
+                "price": {
+                  "amount": 921.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 921.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "mtfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["bcfr"],
+                "price": {
+                  "amount": 923.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 923.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "bcfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["emir"],
+                "price": {
+                  "amount": 936.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 936.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "emir"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["opfr"],
+                "price": {
+                  "amount": 936.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 936.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "opfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["xpfr"],
+                "price": {
+                  "amount": 936.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 936.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "xpfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["skyp"],
+                "price": {
+                  "amount": 997
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 997
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "skyp"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["bffr"],
+                "price": {
+                  "amount": 1136.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1136.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "bffr"
+                  }
+                ]
+              }
+            ],
+            "deeplink": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310112155--32348-1-16201-2310121335|16201-2310200815--32348-1-10413-2310202000?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1"
+          },
+          {
+            "id": "10413-2310112155--32340-1-16201-2310121420|16201-2310201720--32340-1-10413-2310210625",
+            "price": {
+              "raw": 974.99,
+              "formatted": "975 €"
+            },
+            "legs": [
+              {
+                "id": "10413-2310112155--32340-1-16201-2310121420",
+                "origin": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 865,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-11T21:55:00",
+                "arrival": "2023-10-12T14:20:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32340,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/ET.png",
+                      "name": "Ethiopian Airlines"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "10413-9252-2310112155-2310120600--32340",
+                    "origin": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "ADD",
+                      "displayCode": "ADD",
+                      "parent": {
+                        "flightPlaceId": "ADDA",
+                        "displayCode": "ADD",
+                        "name": "Addis Ababa",
+                        "type": "City"
+                      },
+                      "name": "Addis Ababa",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-11T21:55:00",
+                    "arrival": "2023-10-12T06:00:00",
+                    "durationInMinutes": 425,
+                    "flightNumber": "735",
+                    "marketingCarrier": {
+                      "id": -32340,
+                      "name": "Ethiopian Airlines",
+                      "alternateId": "ET",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32340,
+                      "name": "Ethiopian Airlines",
+                      "alternateId": "ET",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "9252-16201-2310120930-2310121420--32340",
+                    "origin": {
+                      "flightPlaceId": "ADD",
+                      "displayCode": "ADD",
+                      "parent": {
+                        "flightPlaceId": "ADDA",
+                        "displayCode": "ADD",
+                        "name": "Addis Ababa",
+                        "type": "City"
+                      },
+                      "name": "Addis Ababa",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-12T09:30:00",
+                    "arrival": "2023-10-12T14:20:00",
+                    "durationInMinutes": 230,
+                    "flightNumber": "879",
+                    "marketingCarrier": {
+                      "id": -32340,
+                      "name": "Ethiopian Airlines",
+                      "alternateId": "ET",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32340,
+                      "name": "Ethiopian Airlines",
+                      "alternateId": "ET",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "16201-2310201720--32340-1-10413-2310210625",
+                "origin": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 905,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-20T17:20:00",
+                "arrival": "2023-10-21T06:25:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32340,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/ET.png",
+                      "name": "Ethiopian Airlines"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "16201-9252-2310201720-2310202005--32340",
+                    "origin": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "ADD",
+                      "displayCode": "ADD",
+                      "parent": {
+                        "flightPlaceId": "ADDA",
+                        "displayCode": "ADD",
+                        "name": "Addis Ababa",
+                        "type": "City"
+                      },
+                      "name": "Addis Ababa",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T17:20:00",
+                    "arrival": "2023-10-20T20:05:00",
+                    "durationInMinutes": 225,
+                    "flightNumber": "878",
+                    "marketingCarrier": {
+                      "id": -32340,
+                      "name": "Ethiopian Airlines",
+                      "alternateId": "ET",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32340,
+                      "name": "Ethiopian Airlines",
+                      "alternateId": "ET",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "9252-10413-2310210005-2310210625--32340",
+                    "origin": {
+                      "flightPlaceId": "ADD",
+                      "displayCode": "ADD",
+                      "parent": {
+                        "flightPlaceId": "ADDA",
+                        "displayCode": "ADD",
+                        "name": "Addis Ababa",
+                        "type": "City"
+                      },
+                      "name": "Addis Ababa",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-21T00:05:00",
+                    "arrival": "2023-10-21T06:25:00",
+                    "durationInMinutes": 440,
+                    "flightNumber": "734",
+                    "marketingCarrier": {
+                      "id": -32340,
+                      "name": "Ethiopian Airlines",
+                      "alternateId": "ET",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32340,
+                      "name": "Ethiopian Airlines",
+                      "alternateId": "ET",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              }
+            ],
+            "isSelfTransfer": false,
+            "isProtectedSelfTransfer": false,
+            "farePolicy": {
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isCancellationAllowed": false,
+              "isPartiallyRefundable": false
+            },
+            "eco": {
+              "ecoContenderDelta": 27.464844
+            },
+            "baggage": {
+              "bagsIncluded": 2,
+              "priceProvidedForBag": false,
+              "priceForBag": 0
+            },
+            "fareAttributes": {},
+            "isMashUp": false,
+            "hasFlexibleOptions": false,
+            "score": 0.797215,
+            "pricingOptions": [
+              {
+                "agentIds": ["bcfr"],
+                "price": {
+                  "amount": 974.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 974.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "bcfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["gtfr"],
+                "price": {
+                  "amount": 974.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 974.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "gtfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["mtfr"],
+                "price": {
+                  "amount": 993.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 993.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "mtfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["ctfr"],
+                "price": {
+                  "amount": 995.09
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 995.09
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "ctfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["ethi"],
+                "price": {
+                  "amount": 1006.06
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1006.06
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "ethi"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["gofr"],
+                "price": {
+                  "amount": 1006.18
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1006.18
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "gofr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["atfr"],
+                "price": {
+                  "amount": 1009
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1009
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "atfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["edfr"],
+                "price": {
+                  "amount": 1010.33
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1010.33
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "edfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["opfr"],
+                "price": {
+                  "amount": 1024.14
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1024.14
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "opfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["xpfr"],
+                "price": {
+                  "amount": 1024.14
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1024.14
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "xpfr"
+                  }
+                ]
+              }
+            ],
+            "deeplink": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310112155--32340-1-16201-2310121420|16201-2310201720--32340-1-10413-2310210625?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1"
+          }
+        ]
+      },
+      {
+        "id": "Cheapest",
+        "name": "Cheapest",
+        "items": [
+          {
+            "id": "10413-2310111535--32348-1-16201-2310121335|16201-2310200815--32348-1-10413-2310202000",
+            "price": {
+              "raw": 868,
+              "formatted": "868 €"
+            },
+            "legs": [
+              {
+                "id": "10413-2310111535--32348-1-16201-2310121335",
+                "origin": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 1200,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-11T15:35:00",
+                "arrival": "2023-10-12T13:35:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "10413-11182-2310111535-2310120020--32348",
+                    "origin": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-11T15:35:00",
+                    "arrival": "2023-10-12T00:20:00",
+                    "durationInMinutes": 405,
+                    "flightNumber": "74",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-16201-2310120855-2310121335--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-12T08:55:00",
+                    "arrival": "2023-10-12T13:35:00",
+                    "durationInMinutes": 280,
+                    "flightNumber": "707",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "16201-2310200815--32348-1-10413-2310202000",
+                "origin": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 825,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-20T08:15:00",
+                "arrival": "2023-10-20T20:00:00",
+                "timeDeltaInDays": 0,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "16201-11182-2310200815-2310201245--32348",
+                    "origin": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T08:15:00",
+                    "arrival": "2023-10-20T12:45:00",
+                    "durationInMinutes": 270,
+                    "flightNumber": "706",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-10413-2310201440-2310202000--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T14:40:00",
+                    "arrival": "2023-10-20T20:00:00",
+                    "durationInMinutes": 440,
+                    "flightNumber": "75",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              }
+            ],
+            "isSelfTransfer": false,
+            "isProtectedSelfTransfer": false,
+            "farePolicy": {
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isCancellationAllowed": false,
+              "isPartiallyRefundable": false
+            },
+            "baggage": {
+              "bagsIncluded": 1,
+              "priceProvidedForBag": false,
+              "priceForBag": 0
+            },
+            "fareAttributes": {},
+            "tags": ["cheapest"],
+            "isMashUp": false,
+            "hasFlexibleOptions": false,
+            "score": 1,
+            "pricingOptions": [
+              {
+                "agentIds": ["atfr"],
+                "price": {
+                  "amount": 868
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 868
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "atfr"
+                  }
+                ]
+              }
+            ],
+            "deeplink": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310111535--32348-1-16201-2310121335|16201-2310200815--32348-1-10413-2310202000?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1"
+          },
+          {
+            "id": "10413-2310111535--32348-1-16201-2310121335|16201-2310202350--32348-1-10413-2310212000",
+            "price": {
+              "raw": 868,
+              "formatted": "868 €"
+            },
+            "legs": [
+              {
+                "id": "10413-2310111535--32348-1-16201-2310121335",
+                "origin": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 1200,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-11T15:35:00",
+                "arrival": "2023-10-12T13:35:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "10413-11182-2310111535-2310120020--32348",
+                    "origin": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-11T15:35:00",
+                    "arrival": "2023-10-12T00:20:00",
+                    "durationInMinutes": 405,
+                    "flightNumber": "74",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-16201-2310120855-2310121335--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-12T08:55:00",
+                    "arrival": "2023-10-12T13:35:00",
+                    "durationInMinutes": 280,
+                    "flightNumber": "707",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "16201-2310202350--32348-1-10413-2310212000",
+                "origin": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 1330,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-20T23:50:00",
+                "arrival": "2023-10-21T20:00:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "16201-11182-2310202350-2310210420--32348",
+                    "origin": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T23:50:00",
+                    "arrival": "2023-10-21T04:20:00",
+                    "durationInMinutes": 270,
+                    "flightNumber": "708",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-10413-2310211440-2310212000--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-21T14:40:00",
+                    "arrival": "2023-10-21T20:00:00",
+                    "durationInMinutes": 440,
+                    "flightNumber": "75",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              }
+            ],
+            "isSelfTransfer": false,
+            "isProtectedSelfTransfer": false,
+            "farePolicy": {
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isCancellationAllowed": false,
+              "isPartiallyRefundable": false
+            },
+            "baggage": {
+              "bagsIncluded": 1,
+              "priceProvidedForBag": false,
+              "priceForBag": 0
+            },
+            "fareAttributes": {},
+            "tags": ["cheapest"],
+            "isMashUp": false,
+            "hasFlexibleOptions": false,
+            "score": 1,
+            "pricingOptions": [
+              {
+                "agentIds": ["atfr"],
+                "price": {
+                  "amount": 868
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 868
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "atfr"
+                  }
+                ]
+              }
+            ],
+            "deeplink": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310111535--32348-1-16201-2310121335|16201-2310202350--32348-1-10413-2310212000?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1"
+          },
+          {
+            "id": "10413-2310111125--32348-1-16201-2310121335|16201-2310200815--32348-1-10413-2310202000",
+            "price": {
+              "raw": 896.75,
+              "formatted": "897 €"
+            },
+            "legs": [
+              {
+                "id": "10413-2310111125--32348-1-16201-2310121335",
+                "origin": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 1450,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-11T11:25:00",
+                "arrival": "2023-10-12T13:35:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "10413-11182-2310111125-2310112000--32348",
+                    "origin": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-11T11:25:00",
+                    "arrival": "2023-10-11T20:00:00",
+                    "durationInMinutes": 395,
+                    "flightNumber": "72",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-16201-2310120855-2310121335--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-12T08:55:00",
+                    "arrival": "2023-10-12T13:35:00",
+                    "durationInMinutes": 280,
+                    "flightNumber": "707",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "16201-2310200815--32348-1-10413-2310202000",
+                "origin": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 825,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-20T08:15:00",
+                "arrival": "2023-10-20T20:00:00",
+                "timeDeltaInDays": 0,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "16201-11182-2310200815-2310201245--32348",
+                    "origin": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T08:15:00",
+                    "arrival": "2023-10-20T12:45:00",
+                    "durationInMinutes": 270,
+                    "flightNumber": "706",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-10413-2310201440-2310202000--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T14:40:00",
+                    "arrival": "2023-10-20T20:00:00",
+                    "durationInMinutes": 440,
+                    "flightNumber": "75",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              }
+            ],
+            "isSelfTransfer": false,
+            "isProtectedSelfTransfer": false,
+            "farePolicy": {
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isCancellationAllowed": false,
+              "isPartiallyRefundable": false
+            },
+            "baggage": {
+              "bagsIncluded": 1,
+              "priceProvidedForBag": false,
+              "priceForBag": 0
+            },
+            "fareAttributes": {},
+            "isMashUp": false,
+            "hasFlexibleOptions": false,
+            "score": 0.9967966,
+            "pricingOptions": [
+              {
+                "agentIds": ["emir"],
+                "price": {
+                  "amount": 896.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 896.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "emir"
+                  }
+                ]
+              }
+            ],
+            "deeplink": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310111125--32348-1-16201-2310121335|16201-2310200815--32348-1-10413-2310202000?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1"
+          }
+        ]
+      },
+      {
+        "id": "Fastest",
+        "name": "Fastest",
+        "items": [
+          {
+            "id": "10413-2310111535--32348-1-16201-2310120650|16201-2310202015--31939-1-10413-2310210725",
+            "price": {
+              "raw": 1431.99,
+              "formatted": "1,432 €"
+            },
+            "legs": [
+              {
+                "id": "10413-2310111535--32348-1-16201-2310120650",
+                "origin": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 795,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-11T15:35:00",
+                "arrival": "2023-10-12T06:50:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "10413-11182-2310111535-2310120020--32348",
+                    "origin": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-11T15:35:00",
+                    "arrival": "2023-10-12T00:20:00",
+                    "durationInMinutes": 405,
+                    "flightNumber": "74",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-16201-2310120215-2310120650--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-12T02:15:00",
+                    "arrival": "2023-10-12T06:50:00",
+                    "durationInMinutes": 275,
+                    "flightNumber": "705",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "16201-2310202015--31939-1-10413-2310210725",
+                "origin": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 790,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-20T20:15:00",
+                "arrival": "2023-10-21T07:25:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -31939,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/QR.png",
+                      "name": "Qatar Airways"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "16201-11089-2310202015-2310202355--31939",
+                    "origin": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DOH",
+                      "displayCode": "DOH",
+                      "parent": {
+                        "flightPlaceId": "DOHA",
+                        "displayCode": "DOH",
+                        "name": "Doha",
+                        "type": "City"
+                      },
+                      "name": "Hamad International",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T20:15:00",
+                    "arrival": "2023-10-20T23:55:00",
+                    "durationInMinutes": 280,
+                    "flightNumber": "679",
+                    "marketingCarrier": {
+                      "id": -31939,
+                      "name": "Qatar Airways",
+                      "alternateId": "QR",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -31939,
+                      "name": "Qatar Airways",
+                      "alternateId": "QR",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11089-10413-2310210125-2310210725--31939",
+                    "origin": {
+                      "flightPlaceId": "DOH",
+                      "displayCode": "DOH",
+                      "parent": {
+                        "flightPlaceId": "DOHA",
+                        "displayCode": "DOH",
+                        "name": "Doha",
+                        "type": "City"
+                      },
+                      "name": "Hamad International",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-21T01:25:00",
+                    "arrival": "2023-10-21T07:25:00",
+                    "durationInMinutes": 420,
+                    "flightNumber": "41",
+                    "marketingCarrier": {
+                      "id": -31939,
+                      "name": "Qatar Airways",
+                      "alternateId": "QR",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -31939,
+                      "name": "Qatar Airways",
+                      "alternateId": "QR",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              }
+            ],
+            "isSelfTransfer": false,
+            "isProtectedSelfTransfer": false,
+            "farePolicy": {
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isCancellationAllowed": false,
+              "isPartiallyRefundable": false
+            },
+            "baggage": {
+              "bagsIncluded": 1,
+              "priceProvidedForBag": false,
+              "priceForBag": 0
+            },
+            "fareAttributes": {},
+            "tags": ["shortest"],
+            "isMashUp": false,
+            "hasFlexibleOptions": false,
+            "score": 1,
+            "pricingOptions": [
+              {
+                "agentIds": ["gtfr"],
+                "price": {
+                  "amount": 1431.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1431.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "gtfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["bcfr"],
+                "price": {
+                  "amount": 1445.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1445.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "bcfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["lmfr"],
+                "price": {
+                  "amount": 1447.56
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1447.56
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "lmfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["mtfr"],
+                "price": {
+                  "amount": 1454.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1454.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "mtfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["bffr"],
+                "price": {
+                  "amount": 1664.19
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1664.19
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "bffr"
+                  }
+                ]
+              }
+            ],
+            "deeplink": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310111535--32348-1-16201-2310120650|16201-2310202015--31939-1-10413-2310210725?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1"
+          },
+          {
+            "id": "10413-2310112155--32348-1-16201-2310121335|16201-2310202015--31939-1-10413-2310210725",
+            "price": {
+              "raw": 1431.99,
+              "formatted": "1,432 €"
+            },
+            "legs": [
+              {
+                "id": "10413-2310112155--32348-1-16201-2310121335",
+                "origin": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 820,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-11T21:55:00",
+                "arrival": "2023-10-12T13:35:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "10413-11182-2310112155-2310120635--32348",
+                    "origin": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-11T21:55:00",
+                    "arrival": "2023-10-12T06:35:00",
+                    "durationInMinutes": 400,
+                    "flightNumber": "76",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-16201-2310120855-2310121335--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-12T08:55:00",
+                    "arrival": "2023-10-12T13:35:00",
+                    "durationInMinutes": 280,
+                    "flightNumber": "707",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "16201-2310202015--31939-1-10413-2310210725",
+                "origin": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 790,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-20T20:15:00",
+                "arrival": "2023-10-21T07:25:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -31939,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/QR.png",
+                      "name": "Qatar Airways"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "16201-11089-2310202015-2310202355--31939",
+                    "origin": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DOH",
+                      "displayCode": "DOH",
+                      "parent": {
+                        "flightPlaceId": "DOHA",
+                        "displayCode": "DOH",
+                        "name": "Doha",
+                        "type": "City"
+                      },
+                      "name": "Hamad International",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T20:15:00",
+                    "arrival": "2023-10-20T23:55:00",
+                    "durationInMinutes": 280,
+                    "flightNumber": "679",
+                    "marketingCarrier": {
+                      "id": -31939,
+                      "name": "Qatar Airways",
+                      "alternateId": "QR",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -31939,
+                      "name": "Qatar Airways",
+                      "alternateId": "QR",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11089-10413-2310210125-2310210725--31939",
+                    "origin": {
+                      "flightPlaceId": "DOH",
+                      "displayCode": "DOH",
+                      "parent": {
+                        "flightPlaceId": "DOHA",
+                        "displayCode": "DOH",
+                        "name": "Doha",
+                        "type": "City"
+                      },
+                      "name": "Hamad International",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-21T01:25:00",
+                    "arrival": "2023-10-21T07:25:00",
+                    "durationInMinutes": 420,
+                    "flightNumber": "41",
+                    "marketingCarrier": {
+                      "id": -31939,
+                      "name": "Qatar Airways",
+                      "alternateId": "QR",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -31939,
+                      "name": "Qatar Airways",
+                      "alternateId": "QR",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              }
+            ],
+            "isSelfTransfer": false,
+            "isProtectedSelfTransfer": false,
+            "farePolicy": {
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isCancellationAllowed": false,
+              "isPartiallyRefundable": false
+            },
+            "baggage": {
+              "bagsIncluded": 1,
+              "priceProvidedForBag": false,
+              "priceForBag": 0
+            },
+            "fareAttributes": {},
+            "tags": ["second_shortest"],
+            "isMashUp": false,
+            "hasFlexibleOptions": false,
+            "score": 0.9916943,
+            "pricingOptions": [
+              {
+                "agentIds": ["gtfr"],
+                "price": {
+                  "amount": 1431.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1431.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "gtfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["bcfr"],
+                "price": {
+                  "amount": 1445.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1445.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "bcfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["lmfr"],
+                "price": {
+                  "amount": 1447.56
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1447.56
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "lmfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["mtfr"],
+                "price": {
+                  "amount": 1454.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1454.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "mtfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["bffr"],
+                "price": {
+                  "amount": 1664.19
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1664.19
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "bffr"
+                  }
+                ]
+              }
+            ],
+            "deeplink": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310112155--32348-1-16201-2310121335|16201-2310202015--31939-1-10413-2310210725?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1"
+          },
+          {
+            "id": "10413-2310111535--32348-1-16201-2310120650|16201-2310200815--32348-1-10413-2310202000",
+            "price": {
+              "raw": 906,
+              "formatted": "906 €"
+            },
+            "legs": [
+              {
+                "id": "10413-2310111535--32348-1-16201-2310120650",
+                "origin": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 795,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-11T15:35:00",
+                "arrival": "2023-10-12T06:50:00",
+                "timeDeltaInDays": 1,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "10413-11182-2310111535-2310120020--32348",
+                    "origin": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-11T15:35:00",
+                    "arrival": "2023-10-12T00:20:00",
+                    "durationInMinutes": 405,
+                    "flightNumber": "74",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-16201-2310120215-2310120650--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-12T02:15:00",
+                    "arrival": "2023-10-12T06:50:00",
+                    "durationInMinutes": 275,
+                    "flightNumber": "705",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "16201-2310200815--32348-1-10413-2310202000",
+                "origin": {
+                  "id": "SEZ",
+                  "name": "Mahe Island",
+                  "displayCode": "SEZ",
+                  "city": "Mahe Island",
+                  "isHighlighted": false
+                },
+                "destination": {
+                  "id": "CDG",
+                  "name": "Paris Charles de Gaulle",
+                  "displayCode": "CDG",
+                  "city": "Paris",
+                  "isHighlighted": false
+                },
+                "durationInMinutes": 825,
+                "stopCount": 1,
+                "isSmallestStops": false,
+                "departure": "2023-10-20T08:15:00",
+                "arrival": "2023-10-20T20:00:00",
+                "timeDeltaInDays": 0,
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32348,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+                      "name": "Emirates"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "segments": [
+                  {
+                    "id": "16201-11182-2310200815-2310201245--32348",
+                    "origin": {
+                      "flightPlaceId": "SEZ",
+                      "displayCode": "SEZ",
+                      "parent": {
+                        "flightPlaceId": "SEZA",
+                        "displayCode": "SEZ",
+                        "name": "Mahe Island",
+                        "type": "City"
+                      },
+                      "name": "Mahe Island",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T08:15:00",
+                    "arrival": "2023-10-20T12:45:00",
+                    "durationInMinutes": 270,
+                    "flightNumber": "706",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  },
+                  {
+                    "id": "11182-10413-2310201440-2310202000--32348",
+                    "origin": {
+                      "flightPlaceId": "DXB",
+                      "displayCode": "DXB",
+                      "parent": {
+                        "flightPlaceId": "DXBA",
+                        "displayCode": "DXB",
+                        "name": "Dubai",
+                        "type": "City"
+                      },
+                      "name": "Dubai",
+                      "type": "Airport"
+                    },
+                    "destination": {
+                      "flightPlaceId": "CDG",
+                      "displayCode": "CDG",
+                      "parent": {
+                        "flightPlaceId": "PARI",
+                        "displayCode": "PAR",
+                        "name": "Paris",
+                        "type": "City"
+                      },
+                      "name": "Paris Charles de Gaulle",
+                      "type": "Airport"
+                    },
+                    "departure": "2023-10-20T14:40:00",
+                    "arrival": "2023-10-20T20:00:00",
+                    "durationInMinutes": 440,
+                    "flightNumber": "75",
+                    "marketingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    },
+                    "operatingCarrier": {
+                      "id": -32348,
+                      "name": "Emirates",
+                      "alternateId": "EK",
+                      "allianceId": 0
+                    }
+                  }
+                ]
+              }
+            ],
+            "isSelfTransfer": false,
+            "isProtectedSelfTransfer": false,
+            "farePolicy": {
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isCancellationAllowed": false,
+              "isPartiallyRefundable": false
+            },
+            "baggage": {
+              "bagsIncluded": 1,
+              "priceProvidedForBag": false,
+              "priceForBag": 0
+            },
+            "fareAttributes": {},
+            "tags": ["third_shortest"],
+            "isMashUp": false,
+            "hasFlexibleOptions": false,
+            "score": 0.9883721,
+            "pricingOptions": [
+              {
+                "agentIds": ["atfr"],
+                "price": {
+                  "amount": 906
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 906
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "atfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["gtfr"],
+                "price": {
+                  "amount": 908.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 908.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "gtfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["lmfr"],
+                "price": {
+                  "amount": 909.36
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 909.36
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "lmfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["ctfr"],
+                "price": {
+                  "amount": 913.05
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 913.05
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "ctfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["gofr"],
+                "price": {
+                  "amount": 916.23
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 916.23
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "gofr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["edfr"],
+                "price": {
+                  "amount": 921.51
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 921.51
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "edfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["mtfr"],
+                "price": {
+                  "amount": 921.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 921.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "mtfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["bcfr"],
+                "price": {
+                  "amount": 923.99
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 923.99
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "bcfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["emir"],
+                "price": {
+                  "amount": 936.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 936.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "emir"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["opfr"],
+                "price": {
+                  "amount": 936.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 936.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "opfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["xpfr"],
+                "price": {
+                  "amount": 936.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 936.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "xpfr"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["skyp"],
+                "price": {
+                  "amount": 997
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 997
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "skyp"
+                  }
+                ]
+              },
+              {
+                "agentIds": ["bffr"],
+                "price": {
+                  "amount": 1136.75
+                },
+                "items": [
+                  {
+                    "price": {
+                      "amount": 1136.75
+                    },
+                    "bookingProposition": "PBOOK",
+                    "agentId": "bffr"
+                  }
+                ]
+              }
+            ],
+            "deeplink": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310111535--32348-1-16201-2310120650|16201-2310200815--32348-1-10413-2310202000?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1"
+          }
+        ]
+      }
+    ]
+  }
+}

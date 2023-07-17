@@ -22,7 +22,7 @@ async function login(req, res, next) {
       });
       return res.status(200).json({ authToken: authToken });
     } else {
-      return res.status(401).json({ message: "Unable to authenticate the user" });
+      return res.status(401).json({ errorMessage: "Unable to authenticate user" });
     }
   } catch (err) {
     next(err);

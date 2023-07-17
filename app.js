@@ -1,6 +1,6 @@
 // ℹ️ Gets access to environment variables/settings
 // https://www.npmjs.com/package/dotenv
-require("dotenv").config();
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV || "development"}` });
 
 // ℹ️ Connects to the database
 require("./db");
@@ -15,8 +15,8 @@ const app = express();
 require("./config")(app);
 
 // 👇 Start handling routes here
-const userRoutes = require("./routes/user.routes");
-app.use("/api", userRoutes);
+const apiRoutes = require("./routes/api.routes");
+app.use("/api", apiRoutes);
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);

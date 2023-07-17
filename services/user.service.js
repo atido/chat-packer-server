@@ -7,14 +7,27 @@ class UserService {
   }
 
   async checkIfUserExist(username, email) {
-    return await this.mongooseService.count({ $or: [{ username }, { email }] });
+    try {
+      return await this.mongooseService.count({ $or: [{ username }, { email }] });
+    } catch (err) {
+      throw err;
+    }
   }
 
   async createUser(email, password, username) {
-    return await this.mongooseService.create({ email, password, username });
+    try {
+      return await this.mongooseService.create({ email, password, username });
+    } catch (err) {
+      throw err;
+    }
   }
+
   async getUserByEmail(email) {
-    return await this.mongooseService.findOne({ email });
+    try {
+      return await this.mongooseService.findOne({ email });
+    } catch (err) {
+      throw err;
+    }
   }
 }
 

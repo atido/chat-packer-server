@@ -24,3 +24,5 @@ ehthumbs.db
 
 # other
 yarn.lock
+
+.env.*

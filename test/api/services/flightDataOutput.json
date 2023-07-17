@@ -1,0 +1,182 @@
+[
+  {
+    "id": "Best",
+    "flightsItems": [
+      {
+        "id": "10413-2310111535--32348-1-16201-2310120650|16201-2310200815--32348-1-10413-2310202000",
+        "price": 906,
+        "deeplink": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310111535--32348-1-16201-2310120650|16201-2310200815--32348-1-10413-2310202000?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1",
+        "legs": [
+          {
+            "id": "10413-2310111535--32348-1-16201-2310120650",
+            "origin": {
+              "id": "CDG",
+              "name": "Paris Charles de Gaulle",
+              "displayCode": "CDG"
+            },
+            "destination": {
+              "id": "SEZ",
+              "name": "Mahe Island",
+              "displayCode": "SEZ"
+            },
+            "stopCount": 1,
+            "duration": "13h15",
+            "departure": {
+              "time": "15:35",
+              "date": "2023-10-11"
+            },
+            "arrival": {
+              "time": "06:50",
+              "date": "2023-10-12"
+            },
+            "carrierLogo": "https://logos.skyscnr.com/images/airlines/favicon/EK.png"
+          },
+          {
+            "id": "16201-2310200815--32348-1-10413-2310202000",
+            "origin": {
+              "id": "SEZ",
+              "name": "Mahe Island",
+              "displayCode": "SEZ"
+            },
+            "destination": {
+              "id": "CDG",
+              "name": "Paris Charles de Gaulle",
+              "displayCode": "CDG"
+            },
+            "stopCount": 1,
+            "duration": "13h45",
+            "departure": {
+              "time": "08:15",
+              "date": "2023-10-20"
+            },
+            "arrival": {
+              "time": "20:00",
+              "date": "2023-10-20"
+            },
+            "carrierLogo": "https://logos.skyscnr.com/images/airlines/favicon/EK.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Cheapest",
+    "flightsItems": [
+      {
+        "id": "10413-2310111535--32348-1-16201-2310121335|16201-2310200815--32348-1-10413-2310202000",
+        "price": 868,
+        "deeplink": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310111535--32348-1-16201-2310121335|16201-2310200815--32348-1-10413-2310202000?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1",
+        "legs": [
+          {
+            "id": "10413-2310111535--32348-1-16201-2310121335",
+            "origin": {
+              "id": "CDG",
+              "name": "Paris Charles de Gaulle",
+              "displayCode": "CDG"
+            },
+            "destination": {
+              "id": "SEZ",
+              "name": "Mahe Island",
+              "displayCode": "SEZ"
+            },
+            "stopCount": 1,
+            "duration": "20h00",
+            "departure": {
+              "time": "15:35",
+              "date": "2023-10-11"
+            },
+            "arrival": {
+              "time": "13:35",
+              "date": "2023-10-12"
+            },
+            "carrierLogo": "https://logos.skyscnr.com/images/airlines/favicon/EK.png"
+          },
+          {
+            "id": "16201-2310200815--32348-1-10413-2310202000",
+            "origin": {
+              "id": "SEZ",
+              "name": "Mahe Island",
+              "displayCode": "SEZ"
+            },
+            "destination": {
+              "id": "CDG",
+              "name": "Paris Charles de Gaulle",
+              "displayCode": "CDG"
+            },
+            "stopCount": 1,
+            "duration": "13h45",
+            "departure": {
+              "time": "08:15",
+              "date": "2023-10-20"
+            },
+            "arrival": {
+              "time": "20:00",
+              "date": "2023-10-20"
+            },
+            "carrierLogo": "https://logos.skyscnr.com/images/airlines/favicon/EK.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Fastest",
+    "flightsItems": [
+      {
+        "id": "10413-2310111535--32348-1-16201-2310120650|16201-2310202015--31939-1-10413-2310210725",
+        "price": 1431.99,
+        "deeplink": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310111535--32348-1-16201-2310120650|16201-2310202015--31939-1-10413-2310210725?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1",
+        "legs": [
+          {
+            "id": "10413-2310111535--32348-1-16201-2310120650",
+            "origin": {
+              "id": "CDG",
+              "name": "Paris Charles de Gaulle",
+              "displayCode": "CDG"
+            },
+            "destination": {
+              "id": "SEZ",
+              "name": "Mahe Island",
+              "displayCode": "SEZ"
+            },
+            "stopCount": 1,
+            "duration": "13h15",
+            "departure": {
+              "time": "15:35",
+              "date": "2023-10-11"
+            },
+            "arrival": {
+              "time": "06:50",
+              "date": "2023-10-12"
+            },
+            "carrierLogo": "https://logos.skyscnr.com/images/airlines/favicon/EK.png"
+          },
+          {
+            "id": "16201-2310202015--31939-1-10413-2310210725",
+            "origin": {
+              "id": "SEZ",
+              "name": "Mahe Island",
+              "displayCode": "SEZ"
+            },
+            "destination": {
+              "id": "CDG",
+              "name": "Paris Charles de Gaulle",
+              "displayCode": "CDG"
+            },
+            "stopCount": 1,
+            "duration": "13h10",
+            "departure": {
+              "time": "20:15",
+              "date": "2023-10-20"
+            },
+            "arrival": {
+              "time": "07:25",
+              "date": "2023-10-21"
+            },
+            "carrierLogo": "https://logos.skyscnr.com/images/airlines/favicon/QR.png"
+          }
+        ]
+      }
+    ]
+  }
+]
