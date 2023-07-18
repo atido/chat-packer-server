@@ -12,15 +12,18 @@ class ItineraryDTO {
 class FlightItem {
   constructor(flightItemFromApi) {
     this.id = flightItemFromApi.id;
-    this.price = flightItemFromApi.price.raw;
-    this.deeplink = flightItemFromApi.deeplink;
-    this.legs = flightItemFromApi.legs.map((legFromApi) => new Leg(legFromApi));
+    this.price = {
+      total: flightItemFromApi.price.raw,
+      currency: flightItemFromApi.price.currency || "EUR",
+    };
+    this.url = flightItemFromApi.deeplink;
+    this.go = new Leg(flightItemFromApi.legs[0]);
+    this.back = new Leg(flightItemFromApi.legs[1]);
   }
 }
 
 class Leg {
   constructor(legFromApi) {
-    this.id = legFromApi.id;
     this.origin = new Airport(
       legFromApi.origin.id,
       legFromApi.origin.name,
@@ -31,10 +34,10 @@ class Leg {
       legFromApi.destination.name,
       legFromApi.destination.displayCode
     );
-    this.stopCount = legFromApi.stopCount;
-    this.duration = toHoursAndMinutes(legFromApi.durationInMinutes);
     this.departure = new AirportDate(legFromApi.departure);
     this.arrival = new AirportDate(legFromApi.arrival);
+    this.stopCount = legFromApi.stopCount;
+    this.duration = toHoursAndMinutes(legFromApi.durationInMinutes);
     this.carrierLogo = legFromApi.carriers.marketing[0].logoUrl;
   }
 }
@@ -45,9 +48,10 @@ class AirportDate {
   }
 }
 class Airport {
-  constructor(id, name, displayCode) {
-    this.id = id;
+  constructor(id, name, displayCode, city) {
+    this.code = id;
     this.name = name;
+    this.city = city;
     this.displayCode = displayCode;
   }
 }

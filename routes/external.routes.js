@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
-const AccomodationService = require("../api/services/accommodation.service");
+const AccomodationService = require("../services/api/accommodation.service");
 const accomodationServiceInstance = new AccomodationService();
 
-const PhotoService = require("../api/services/photo.service");
+const PhotoService = require("../services/api/photo.service");
 const photoServiceInstance = new PhotoService();
 
-const FlightService = require("../api/services/flight.service");
+const FlightService = require("../services/api/flight.service");
 const flightServiceInstance = new FlightService();
 
-const ChatService = require("../api/services/chat.service");
+const ChatService = require("../services/api/chat.service");
 const chatServiceInstance = new ChatService();
 
 router.get("/accomodations", async (req, res, next) => {
@@ -44,7 +44,6 @@ router.get("/randomPhoto", async (req, res, next) => {
 
 router.post("/chat", async (req, res, next) => {
   const { conversation } = req.body;
-  console.log(conversation);
   const result = await chatServiceInstance.sendMessage(conversation);
   res.status(200).json(result);
 });

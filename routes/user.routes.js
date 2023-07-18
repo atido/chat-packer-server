@@ -5,14 +5,14 @@ const LoginController = require("../controllers/auth/login.controller");
 
 const { isAuthenticated } = require("../middleware/jwt.middleware");
 
-// POST /auth/signup  - Creates a new user in the database
-router.post("/signup", SignupController.createSignup);
+// POST /sessions  - Creates a new user in the database
+router.post("/users", SignupController.createSignup);
 
-// POST  /auth/login - Verifies email and password and returns a JWT
-router.post("/login", LoginController.login);
+// POST  /sessions - Verifies email and password and returns a JWT
+router.post("/sessions", LoginController.login);
 
-// GET  /auth/verify  -  Used to verify JWT stored on the client
-router.get("/verify", isAuthenticated, (req, res, next) => {
+// GET  /session  -  Used to verify JWT stored on the client
+router.get("/session", isAuthenticated, (req, res, next) => {
   // If JWT token is valid the payload gets decoded by the
   // isAuthenticated middleware and is made available on `req.payload`
 

@@ -1,5 +1,5 @@
 const { createApi } = require("unsplash-js");
-const PhotoService = require("../../../api/services/photo.service");
+const PhotoService = require("../../../services/api/photo.service");
 
 jest.mock("unsplash-js", () => ({
   createApi: jest.fn(),

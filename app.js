@@ -15,11 +15,14 @@ const app = express();
 require("./config")(app);
 
 // 👇 Start handling routes here
-const apiRoutes = require("./routes/api.routes");
-app.use("/api", apiRoutes);
+const tripRoutes = require("./routes/trip.routes");
+app.use("/api", tripRoutes);
 
-const authRoutes = require("./routes/auth.routes");
-app.use("/auth", authRoutes);
+const userRoutes = require("./routes/user.routes");
+app.use("/api", userRoutes);
+
+const externalApiRoutes = require("./routes/external.routes");
+app.use("/api", externalApiRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

@@ -1,5 +1,4 @@
-const FlightService = require("../../../api/services/flight.service");
-const ItineraryDTO = require("../../../dto/itinerary.dto");
+const FlightService = require("../../../services/api/flight.service");
 const fetchMock = require("jest-fetch-mock");
 const mockApiResponse = require("./flightDataInput.json");
 const expectedOutput = require("./flightDataOutput.json");

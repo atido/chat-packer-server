@@ -1,7 +1,7 @@
 require("dotenv").config({ path: ".env.test" });
 const fetchMock = require("jest-fetch-mock");
 
-const AccomodationService = require("../../../api/services/accommodation.service");
+const AccomodationService = require("../../../services/api/accommodation.service");
 const AccomodationDTO = require("../../../dto/accomodation.dto");
 
 beforeAll(() => {
@@ -100,7 +100,6 @@ describe("AccomodationService", () => {
         checkout,
         adultsNb
       );
-      console.log(result);
 
       expect(result).toEqual([
         new AccomodationDTO({
