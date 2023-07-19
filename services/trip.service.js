@@ -24,7 +24,7 @@ class TripService {
   }
   async createTrip(userId, tripInfo, flight, accomodation) {
     try {
-      const { photo } = await this.photoService.getRandomPhoto(trip.tripInfo.destinationCity);
+      const { photo } = await this.photoService.getRandomPhoto(tripInfo.destinationCity);
       return await this.mongooseService.create({
         userId,
         tripInfo,

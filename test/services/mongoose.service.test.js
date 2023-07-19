@@ -66,6 +66,17 @@ describe("MongooseService", () => {
     });
   });
 
+  describe("find", () => {
+    it("should find documents in the database by query", async () => {
+      const doc1 = await Model.create({ name: "Test1" });
+      const doc2 = await Model.create({ name: "Test2" });
+      const results = await service.find({ name: "Test1" });
+
+      expect(results).toContainEqual(expect.objectContaining(doc1.toObject()));
+      expect(results).not.toContainEqual(expect.objectContaining(doc2.toObject()));
+    });
+  });
+
   describe("update", () => {
     it("should update a document in the database by id", async () => {
       const doc = await Model.create({ name: "Test" });

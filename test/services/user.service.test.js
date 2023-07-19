@@ -1,22 +1,17 @@
 const UserService = require("../../services/user.service");
 const MongooseService = require("../../services/mongoose.service");
-let userService = null;
 
 jest.mock("../../services/mongoose.service");
 
-beforeAll(() => {
-  userService = new UserService();
-});
-
-afterEach(() => {
-  jest.clearAllMocks();
-});
-
 describe("UserService", () => {
-  describe("create userService instance", () => {
-    test("userService to be defined", () => {
-      expect(userService).toBeDefined();
-    });
+  let userService;
+
+  beforeEach(() => {
+    userService = new UserService();
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   describe("create", () => {

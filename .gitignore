@@ -1,6 +1,9 @@
 # Dependency directories
 node_modules/
 
+# coverage directories
+coverage/
+
 # Debug log from npm
 npm-debug.log
 
@@ -19,6 +22,7 @@ ehthumbs.db
 *.lnk
 
 
+
 # VS Code
 .vscode/*
 
@@ -26,3 +30,5 @@ ehthumbs.db
 yarn.lock
 
 .env.*
+
+coverage/

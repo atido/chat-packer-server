@@ -14,8 +14,8 @@ async function login(req, res, next) {
   try {
     const foundUser = await userService.getUserByEmail(email);
     if (foundUser && bcrypt.compareSync(password, foundUser.password)) {
-      const { _id, email, username } = foundUser;
-      const payload = { _id, username, email };
+      const { _id, email, username, avatar } = foundUser;
+      const payload = { user: { _id, username, email, avatar } };
       const authToken = jwt.sign(payload, process.env.JWT_TOKEN_SECRET, {
         algorithm: "HS256",
         expiresIn: "6h",

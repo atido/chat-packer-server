@@ -14,9 +14,9 @@ class UserService {
     }
   }
 
-  async createUser(email, password, username) {
+  async createUser(email, password, username, avatar) {
     try {
-      return await this.mongooseService.create({ email, password, username });
+      return await this.mongooseService.create({ email, password, username, avatar });
     } catch (err) {
       throw err;
     }

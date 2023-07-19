@@ -12,9 +12,16 @@ async function createSignup(req, res, next) {
     const isUserExist = await userService.checkIfUserExist(username, email);
     if (isUserExist) return res.status(400).json({ errorMessage: "User already exists." });
 
-    const createdUser = await userService.createUser(email, password, username);
+    const createdUser = await userService.createUser(
+      email,
+      password,
+      username,
+      process.env.AVATAR_DEFAULT_URL
+    );
 
-    return res.status(201).json({ user: { _id: createdUser._id, username: createdUser.username } });
+    return res.status(201).json({
+      user: { _id: createdUser._id, username: createdUser.username },
+    });
   } catch (err) {
     next(err);
   }

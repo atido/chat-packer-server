@@ -1,0 +1,16 @@
+{
+  "id": "860663943931949474",
+  "url": "https://www.airbnb.com/rooms/860663943931949474",
+  "name": "Studio aux Portes de Paris",
+  "city": "Gennevilliers",
+  "images": [
+    "https://a0.muscache.com/im/pictures/miso/Hosting-860663943931949474/original/23cd84a1-61af-4618-aaaf-f9336d689ef2.jpeg?im_w=720",
+    "https://a0.muscache.com/im/pictures/miso/Hosting-860663943931949474/original/8b46e69d-d6fd-4100-8925-9714bfefa0dd.jpeg?im_w=720",
+    "https://a0.muscache.com/im/pictures/miso/Hosting-860663943931949474/original/4e617141-fb82-41af-9ca5-9c4db0c3d633.jpeg?im_w=720"
+  ],
+  "rating": 5,
+  "price": {
+    "total": 72,
+    "currency": "USD"
+  }
+}
