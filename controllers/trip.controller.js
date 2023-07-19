@@ -3,8 +3,8 @@ const tripService = new TripService();
 
 async function getTripDetail(req, res, next) {
   try {
-    const trip = await tripService.getTripById(req.params.id);
-    return res.status(200).json(trip);
+    const trip = await tripService.getTripById(req.params.id, req.payload.user._id);
+    return res.status(200).json(trip || {});
   } catch (err) {
     next(err);
   }
@@ -12,16 +12,14 @@ async function getTripDetail(req, res, next) {
 
 async function getTrips(req, res, next) {
   try {
-    //todo remove
-    const userId = "5cabe64dcf0d4447fa60f5e2";
-    const trips = await tripService.getTripsByUserId(userId);
-    return res.status(200).json(trips);
+    const trips = await tripService.getTripsByUserId(req.payload.user._id);
+    return res.status(200).json(trips || []);
   } catch (err) {
     next(err);
   }
 }
 
-//todo remove
+//todo remove - do not have to be called from controller
 async function createTrip(req, res, next) {
   try {
     const { trip } = req.body;

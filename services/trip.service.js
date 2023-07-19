@@ -8,9 +8,12 @@ class TripService {
     this.photoService = new PhotoService();
   }
 
-  async getTripById(id) {
+  async getTripById(id, userId) {
     try {
-      return await this.mongooseService.findById(id);
+      return await this.mongooseService.findOne(
+        { _id: id, userId },
+        { tripInfo: 1, destinationPhoto: 1, _id: 0 }
+      );
     } catch (err) {
       throw err;
     }
