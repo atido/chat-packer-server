@@ -23,3 +23,8 @@ ehthumbs.db
 
 # VS Code
 .vscode/*
+
+
+.env.*
+
+coverage/

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "assistant",
+    "content": "Welcome!👋 I'm here to help you plan your dream travel ✈️ 🏝️ 🌍"
+  },
+  {
+    "role": "assistant",
+    "content": "If you have an account with us, you might want to log in first to save our conversation 🔐 If not, no worries, we can get started!😃"
+  },
+  {
+    "role": "assistant",
+    "content": "Can you tell me about the trip or destination you'd like to take?"
+  }
+]

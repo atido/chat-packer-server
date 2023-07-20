@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const AuthValidator = require("../../validators/auth.validators");
 
 const UserService = require("../../services/user.service");
-const userService = new UserService();
+const userServiceInstance = new UserService();
 
 async function login(req, res, next) {
   const { email, password } = req.body;
@@ -12,7 +12,7 @@ async function login(req, res, next) {
   if (!result.success) return res.status(400).json({ errorMessage: result.message });
 
   try {
-    const foundUser = await userService.getUserByEmail(email);
+    const foundUser = await userServiceInstance.getUserByEmail(email);
     if (foundUser && bcrypt.compareSync(password, foundUser.password)) {
       const { _id, email, username, avatar } = foundUser;
       const payload = { user: { _id, username, email, avatar } };

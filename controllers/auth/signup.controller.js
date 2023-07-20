@@ -1,5 +1,5 @@
 const UserService = require("../../services/user.service");
-const userService = new UserService();
+const userServiceInstance = new UserService();
 const AuthValidator = require("../../validators/auth.validators");
 
 async function createSignup(req, res, next) {
@@ -9,10 +9,10 @@ async function createSignup(req, res, next) {
   if (!result.success) return res.status(400).json({ errorMessage: result.message });
 
   try {
-    const isUserExist = await userService.checkIfUserExist(username, email);
+    const isUserExist = await userServiceInstance.checkIfUserExist(username, email);
     if (isUserExist) return res.status(400).json({ errorMessage: "User already exists." });
 
-    const createdUser = await userService.createUser(
+    const createdUser = await userServiceInstance.createUser(
       email,
       password,
       username,

@@ -21,6 +21,9 @@ app.use("/api", tripRoutes);
 const userRoutes = require("./routes/user.routes");
 app.use("/api", userRoutes);
 
+const chatRoutes = require("./routes/chat.routes");
+app.use("/api", chatRoutes);
+
 const externalApiRoutes = require("./routes/external.routes");
 app.use("/api", externalApiRoutes);
 

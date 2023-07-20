@@ -10,9 +10,6 @@ const photoServiceInstance = new PhotoService();
 const FlightService = require("../services/api/flight.service");
 const flightServiceInstance = new FlightService();
 
-const ChatService = require("../services/api/chat.service");
-const chatServiceInstance = new ChatService();
-
 router.get("/accomodations", async (req, res, next) => {
   const { location, checkin, checkout, adultsNb } = req.query;
   const result = await accomodationServiceInstance.getAccomodations(

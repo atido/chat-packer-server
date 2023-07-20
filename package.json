@@ -23,6 +23,7 @@
     "unsplash-js": "^7.0.18"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.3.3",
     "nodemon": "^2.0.22"
   }
 }
