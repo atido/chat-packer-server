@@ -1,6 +1,6 @@
 class AccomodationDTO {
   constructor(accomodationFromApi) {
-    this.id = accomodationFromApi.id;
+    this.apiId = accomodationFromApi.id;
     this.url = accomodationFromApi.url;
     this.name = accomodationFromApi.name;
     this.city = accomodationFromApi.city;

@@ -7,6 +7,10 @@ class MongooseService {
     return this.model.create(body);
   }
 
+  insertMany(body) {
+    return this.model.insertMany(body);
+  }
+
   delete(id) {
     return this.model.findByIdAndDelete(id).exec();
   }

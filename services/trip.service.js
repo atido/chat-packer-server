@@ -25,14 +25,14 @@ class TripService {
       throw err;
     }
   }
-  async createTrip(userId, tripInfo, flight, accomodation) {
+  async createTrip(userId, tripInfo, flightId, accomodationId) {
     try {
       const { photo } = await this.photoService.getRandomPhoto(tripInfo.destinationCity);
       return await this.mongooseService.create({
         userId,
         tripInfo,
-        flight,
-        accomodation,
+        flight: flightId,
+        accomodation: accomodationId,
         destinationPhoto: photo,
       });
     } catch (err) {

@@ -10,4 +10,6 @@ router.get("/trips/:id", isAuthenticated, TripController.getTripDetail);
 // GET  /trips - Get trips
 router.get("/trips", isAuthenticated, TripController.getTrips);
 
+router.post("/trips", TripController.createTrip);
+
 module.exports = router;

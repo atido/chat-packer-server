@@ -1,4 +1,6 @@
 const ItineraryDTO = require("../../dto/itinerary.dto");
+const MongooseService = require("../mongoose.service");
+const FlightModel = require("../../models/Flight.model");
 
 class FlightService {
   constructor() {
@@ -10,6 +12,7 @@ class FlightService {
       "X-RapidAPI-Key": process.env.FLIGHT_SERVICE_API_ACCESSKEY,
       "X-RapidAPI-Host": process.env.FLIGHT_SERVICE_API_HOST,
     };
+    this.mongooseService = new MongooseService(FlightModel);
   }
 
   async getFlights(adultsNb, originIATA, destinationIATA, departureDate, returnDate) {
@@ -35,9 +38,30 @@ class FlightService {
       });
       result = await fetch(fullUrl, options);
       const resultJson = await result.json();
-      return resultJson.itineraries.buckets.map(
+      const itineraries = resultJson.itineraries.buckets.map(
         (itineraryFromApi) => new ItineraryDTO(itineraryFromApi)
       );
+
+      // 
+      await Promise.all(
+        itineraries.map(async (itinerary) => {
+          await Promise.all(
+            itinerary.flightsItems.map(async (flightItem) => {
+              const updatedFlightItem = await this.mongooseService.findOneAndUpdate(
+                { apiId: flightItem.apiId },
+                flightItem,
+                {
+                  upsert: true,
+                  new: true,
+                }
+              );
+              flightItem._id = updatedFlightItem._id;
+            })
+          );
+        })
+      );
+
+      return itineraries;
     } catch (err) {
       throw err;
     }

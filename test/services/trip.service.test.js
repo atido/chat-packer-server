@@ -36,12 +36,13 @@ describe("TripService", () => {
   });
 
   describe("getTripById", () => {
-    it("should call mongooseService.findById with correct id", async () => {
+    it("should call mongooseService.findOne with correct id : user and trip", async () => {
       const mockTripId = "trip123";
+      const mockUserId = "user123";
 
-      await tripService.getTripById(mockTripId);
+      await tripService.getTripById(mockTripId, mockUserId);
 
-      expect(MongooseService.prototype.findById).toHaveBeenCalledWith(mockTripId);
+      expect(MongooseService.prototype.findOne).toHaveBeenCalledWith(mockTripId, mockUserId);
     });
 
     it("should call mongooseService.findById and return mock trip", async () => {

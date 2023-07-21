@@ -1,4 +1,6 @@
 const AccomodationDTO = require("../../dto/accomodation.dto");
+const MongooseService = require("../mongoose.service");
+const AccomodationModel = require("../../models/Accomodation.model");
 
 class AccomodationService {
   constructor() {
@@ -10,6 +12,7 @@ class AccomodationService {
       "X-RapidAPI-Key": process.env.ACCOMODATION_SERVICE_API_ACCESSKEY,
       "X-RapidAPI-Host": process.env.ACCOMODATION_SERVICE_API_HOST,
     };
+    this.mongooseService = new MongooseService(AccomodationModel);
   }
 
   async getAccomodations(location, checkin, checkout, adultsNb) {
@@ -28,7 +31,7 @@ class AccomodationService {
         }
       );
       const resultJson = await result.json();
-      return resultJson.results
+      const accomodations = resultJson.results
         .sort((a, b) => {
           if (a.rating === undefined && b.rating === undefined) return 0;
           if (a.rating === undefined) return 1;
@@ -37,6 +40,22 @@ class AccomodationService {
         })
         .slice(0, 5)
         .map((accomodationFromApi) => new AccomodationDTO(accomodationFromApi));
+
+      await Promise.all(
+        accomodations.map(async (accomodation) => {
+          const updatedAccomodation = await this.mongooseService.findOneAndUpdate(
+            { apiId: accomodation.apiId },
+            accomodation,
+            {
+              upsert: true,
+              new: true,
+            }
+          );
+          accomodation._id = updatedAccomodation._id;
+        })
+      );
+
+      return accomodations;
     } catch (err) {
       throw err;
     }

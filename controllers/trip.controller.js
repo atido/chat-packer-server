@@ -22,8 +22,8 @@ async function getTrips(req, res, next) {
 //todo remove - do not have to be called from controller
 async function createTrip(req, res, next) {
   try {
-    const { trip } = req.body;
-    const result = await tripServiceInstance.createTrip(trip);
+    const { userId, tripInfo, flightId, accomodationId } = req.body;
+    const result = await tripServiceInstance.createTrip(userId, tripInfo, flightId, accomodationId);
     return res.status(201).json(result);
   } catch (err) {
     next(err);

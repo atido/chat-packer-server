@@ -3,6 +3,7 @@ const { toHoursAndMinutes, extractHoursAndMinutes, extractYearMonthDay } = requi
 class ItineraryDTO {
   constructor(itineraryFromApi) {
     this.id = itineraryFromApi.id;
+    this.code = itineraryFromApi.id;
     this.flightsItems = itineraryFromApi.items
       .slice(0, 1)
       .map((itemFromApi) => new FlightItem(itemFromApi));
@@ -11,7 +12,7 @@ class ItineraryDTO {
 
 class FlightItem {
   constructor(flightItemFromApi) {
-    this.id = flightItemFromApi.id;
+    this.apiId = flightItemFromApi.id;
     this.price = {
       total: flightItemFromApi.price.raw,
       currency: flightItemFromApi.price.currency || "EUR",
