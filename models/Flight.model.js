@@ -25,7 +25,8 @@ const legSchema = new Schema({
 
 const flightSchema = new Schema(
   {
-    apiId: { type: String, require: true },
+    apiId: { type: String, required: true },
+    type: { type: String, required: true },
     url: { type: String },
     price: { type: priceSchema, required: true },
     go: { type: legSchema, required: true },

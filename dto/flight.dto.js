@@ -1,18 +1,9 @@
 const { toHoursAndMinutes, extractHoursAndMinutes, extractYearMonthDay } = require("../utils/time");
 
-class ItineraryDTO {
-  constructor(itineraryFromApi) {
-    this.id = itineraryFromApi.id;
-    this.code = itineraryFromApi.id;
-    this.flightsItems = itineraryFromApi.items
-      .slice(0, 1)
-      .map((itemFromApi) => new FlightItem(itemFromApi));
-  }
-}
-
-class FlightItem {
-  constructor(flightItemFromApi) {
+class FlightDTO {
+  constructor(flightItemFromApi, itineraryType) {
     this.apiId = flightItemFromApi.id;
+    this.type = itineraryType;
     this.price = {
       total: flightItemFromApi.price.raw,
       currency: flightItemFromApi.price.currency || "EUR",
@@ -56,4 +47,4 @@ class Airport {
     this.displayCode = displayCode;
   }
 }
-module.exports = ItineraryDTO;
+module.exports = FlightDTO;

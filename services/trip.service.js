@@ -20,7 +20,10 @@ class TripService {
   }
   async getTripsByUserId(userId) {
     try {
-      return await this.mongooseService.find({ userId });
+      return await this.mongooseService.findWithMultiplePopulate({ userId }, "", [
+        "flight",
+        "accomodation",
+      ]);
     } catch (err) {
       throw err;
     }

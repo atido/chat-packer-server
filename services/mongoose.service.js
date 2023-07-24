@@ -19,6 +19,10 @@ class MongooseService {
     return this.model.find(query, projection).exec();
   }
 
+  findWithMultiplePopulate(query, projection, populatePathsArray) {
+    return this.model.find(query, projection).populate(populatePathsArray).exec();
+  }
+
   findOne(query, projection) {
     return this.model.findOne(query, projection).exec();
   }
