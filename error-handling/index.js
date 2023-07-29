@@ -9,8 +9,15 @@ module.exports = (app) => {
     // always logs the error
     console.error("ERROR", req.method, req.path, err);
 
+    
+
     // only render if the error ocurred before sending the response
     if (!res.headersSent) {
+      if (err.name === "UnauthorizedError") {
+        res.status(401).json({errorMessage: "invalid token..."});
+        return 
+      } 
+
       res.status(500).json({
         errorMessage: `Internal server error : ${err.message}`,
       });
