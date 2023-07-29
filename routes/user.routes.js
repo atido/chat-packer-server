@@ -5,6 +5,7 @@ const LoginController = require("../controllers/auth/login.controller");
 const fileUploader = require("../config/cloudinary.config");
 const User = require("../models/User.model");
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt")
 
 const { isAuthenticated } = require("../middleware/jwt.middleware");
 
@@ -38,10 +39,25 @@ router.post(
   }
 );
 
-router.put("/user", isAuthenticated, (req, res, next) => {
+router.put("/avatar", isAuthenticated, (req, res, next) => {
   User.findByIdAndUpdate(
     req.payload.user._id,
     { avatar: req.body.avatar },
+    { new: true }
+  )
+    .then((updatedUser) => res.json(updatedUser))
+    .catch((error) => next(error));
+});
+
+router.put("/user", isAuthenticated, async (req, res, next) => {
+  const hashedPassword = await bcrypt.hash(req.body.password, Number(process.env.BCRYPT_SALT))
+  User.findByIdAndUpdate(
+    req.payload.user._id,
+    { 
+      username: req.body.username,
+      email: req.body.email,
+      password: hashedPassword,
+    },
     { new: true }
   )
     .then((updatedUser) => res.json(updatedUser))
