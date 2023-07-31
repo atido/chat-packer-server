@@ -1,6 +1,6 @@
-const TripModel = require("../models/Trip.model");
-const MongooseService = require("./mongoose.service");
-const PhotoService = require("./api/photo.service");
+const TripModel = require('../models/Trip.model');
+const MongooseService = require('./mongoose.service');
+const PhotoService = require('./api/photo.service');
 
 class TripService {
   constructor() {
@@ -10,20 +10,14 @@ class TripService {
 
   async getTripsByUserId(userId) {
     try {
-      return await this.mongooseService.findOne(
-        { userId },
-        { tripInfo: 1, destinationPhoto: 1, _id: 0 }
-      );
+      return await this.mongooseService.find({ userId }, { tripInfo: 1, destinationPhoto: 1 });
     } catch (err) {
       throw err;
     }
   }
   async getTripById(_id, userId) {
     try {
-      const res = await this.mongooseService.findOneWithPopulate({ _id, userId }, "", [
-        "flight",
-        "accommodation",
-      ]);
+      const res = await this.mongooseService.findOneWithPopulate({ _id, userId }, '', ['flight', 'accommodation']);
       return res;
     } catch (err) {
       throw err;
