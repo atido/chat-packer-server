@@ -8,34 +8,35 @@ class TripService {
     this.photoService = new PhotoService();
   }
 
-  async getTripById(id, userId) {
+  async getTripsByUserId(userId) {
     try {
       return await this.mongooseService.findOne(
-        { _id: id, userId },
+        { userId },
         { tripInfo: 1, destinationPhoto: 1, _id: 0 }
       );
     } catch (err) {
       throw err;
     }
   }
-  async getTripsByUserId(userId) {
+  async getTripById(_id, userId) {
     try {
-      return await this.mongooseService.findWithMultiplePopulate({ userId }, "", [
+      const res = await this.mongooseService.findOneWithPopulate({ _id, userId }, "", [
         "flight",
-        "accomodation",
+        "accommodation",
       ]);
+      return res;
     } catch (err) {
       throw err;
     }
   }
-  async createTrip(userId, tripInfo, flightId, accomodationId) {
+  async createTrip(userId, tripInfo, flightId, accommodationId) {
     try {
       const { photo } = await this.photoService.getRandomPhoto(tripInfo.destinationCity);
       return await this.mongooseService.create({
         userId,
         tripInfo,
         flight: flightId,
-        accomodation: accomodationId,
+        accommodation: accommodationId,
         destinationPhoto: photo,
       });
     } catch (err) {

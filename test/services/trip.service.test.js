@@ -4,7 +4,7 @@ const TripService = require("../../services/trip.service");
 const mockFlight = require("./data/flightItem.json");
 const mockTrips = require("./data/trips.json");
 const mockTrip = require("./data/trip.json");
-const mockAccomodation = require("./data/accomodation.json");
+const mockAccommodation = require("./data/accommodation.json");
 
 jest.mock("../../services/mongoose.service");
 jest.mock("../../services/api/photo.service");
@@ -89,7 +89,7 @@ describe("TripService", () => {
   describe("createTrip", () => {
     it("should call photoService.getRandomPhoto with correct destinationCity", async () => {
       PhotoService.prototype.getRandomPhoto.mockResolvedValue(mockPhoto);
-      await tripService.createTrip(mockUserId, mockTripInfo, mockFlight, mockAccomodation);
+      await tripService.createTrip(mockUserId, mockTripInfo, mockFlight, mockAccommodation);
 
       expect(PhotoService.prototype.getRandomPhoto).toHaveBeenCalledWith(
         mockTripInfo.destinationCity
@@ -97,13 +97,13 @@ describe("TripService", () => {
     });
 
     it("should call mongooseService.create with correct trip data", async () => {
-      await tripService.createTrip(mockUserId, mockTripInfo, mockFlight, mockAccomodation);
+      await tripService.createTrip(mockUserId, mockTripInfo, mockFlight, mockAccommodation);
 
       const expectedTripData = {
         userId: mockUserId,
         tripInfo: mockTripInfo,
         flight: mockFlight,
-        accomodation: mockAccomodation,
+        accommodation: mockAccommodation,
         destinationPhoto: mockPhoto.photo,
       };
       expect(MongooseService.prototype.create).toHaveBeenCalledWith(expectedTripData);
@@ -114,7 +114,7 @@ describe("TripService", () => {
       PhotoService.prototype.getRandomPhoto.mockRejectedValue(mockError);
 
       await expect(
-        tripService.createTrip(mockUserId, mockTripInfo, mockFlight, mockAccomodation)
+        tripService.createTrip(mockUserId, mockTripInfo, mockFlight, mockAccommodation)
       ).rejects.toThrow(mockError);
     });
 
@@ -126,7 +126,7 @@ describe("TripService", () => {
         mockUserId,
         mockTripInfo,
         mockFlight,
-        mockAccomodation
+        mockAccommodation
       );
 
       expect(result).toEqual(mockTrip);
@@ -137,7 +137,7 @@ describe("TripService", () => {
       MongooseService.prototype.create.mockRejectedValue(mockError);
 
       await expect(
-        tripService.createTrip(mockUserId, mockTripInfo, mockFlight, mockAccomodation)
+        tripService.createTrip(mockUserId, mockTripInfo, mockFlight, mockAccommodation)
       ).rejects.toThrow(mockError);
     });
   });

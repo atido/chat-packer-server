@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const ChatController = require("../controllers/chat.controller");
 
-// POST /chat  - Creates a new user in the database
-router.post("/chat", ChatController.sendMessage);
+// POST /chat  - Send the event and conversation to the chat api
+router.post("/chat/events", ChatController.events);
 
-// GET /chat/init  - Creates a new user in the database
+// GET /chat/init  - Get initial messages
 router.get("/chat", ChatController.getInitialMessages);
 
 module.exports = router;

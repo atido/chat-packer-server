@@ -9,6 +9,7 @@ const tripInfoSchema = new Schema({
   destinationCity: { type: String, required: true },
   departureDate: { type: Date, required: true },
   returnDate: { type: Date, required: true },
+  adultsNb: { type: Number, required: true },
 });
 
 const tripSchema = new Schema(
@@ -16,7 +17,7 @@ const tripSchema = new Schema(
     userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     tripInfo: { type: tripInfoSchema, required: true },
     flight: { type: Schema.Types.ObjectId, ref: "Flight", required: true },
-    accomodation: { type: Schema.Types.ObjectId, ref: "Accomodation", required: true },
+    accommodation: { type: Schema.Types.ObjectId, ref: "Accommodation", required: true },
     itinerary: { type: itinerarySchema },
     destinationPhoto: { type: String, required: true },
   },

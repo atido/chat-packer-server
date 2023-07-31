@@ -23,7 +23,8 @@
     "multer": "^1.4.5-lts.1",
     "multer-storage-cloudinary": "^4.0.0",
     "openai": "^3.3.0",
-    "unsplash-js": "^7.0.18"
+    "unsplash-js": "^7.0.18",
+    "xstate": "^4.38.2"
   },
   "devDependencies": {
     "@flydotio/dockerfile": "^0.3.3",

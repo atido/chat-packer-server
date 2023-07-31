@@ -1,21 +1,18 @@
-const AccomodationDTO = require("../../dto/accomodation.dto");
-const MongooseService = require("../mongoose.service");
-const AccomodationModel = require("../../models/Accomodation.model");
+const AccommodationDTO = require('../../dto/accommodation.dto');
+const MongooseService = require('../mongoose.service');
+const AccommodationModel = require('../../models/Accommodation.model');
 
-class AccomodationService {
+class AccommodationService {
   constructor() {
-    this.url =
-      process.env.MOCK && process.env.MOCK == "true"
-        ? process.env.MOCK_ACCOMODATION_SERVICE_API_URL
-        : process.env.ACCOMODATION_SERVICE_API_URL;
+    this.url = process.env.MOCK && process.env.MOCK == 'true' ? process.env.MOCK_ACCOMMODATION_SERVICE_API_URL : process.env.ACCOMMODATION_SERVICE_API_URL;
     this.headers = {
-      "X-RapidAPI-Key": process.env.ACCOMODATION_SERVICE_API_ACCESSKEY,
-      "X-RapidAPI-Host": process.env.ACCOMODATION_SERVICE_API_HOST,
+      'X-RapidAPI-Key': process.env.ACCOMMODATION_SERVICE_API_ACCESSKEY,
+      'X-RapidAPI-Host': process.env.ACCOMMODATION_SERVICE_API_HOST,
     };
-    this.mongooseService = new MongooseService(AccomodationModel);
+    this.mongooseService = new MongooseService(AccommodationModel);
   }
 
-  async getAccomodations(location, checkin, checkout, adultsNb) {
+  async searchAccommodations(location, checkin, checkout, adultsNb) {
     try {
       const result = await fetch(
         `${this.url}?${new URLSearchParams({
@@ -23,15 +20,15 @@ class AccomodationService {
           checkin,
           checkout,
           adults: adultsNb,
-          currency: "EUR",
+          currency: 'EUR',
         })}`,
         {
-          method: "GET",
+          method: 'GET',
           headers: this.headers,
         }
       );
       const resultJson = await result.json();
-      const accomodations = resultJson.results
+      const accommodations = resultJson.results
         .sort((a, b) => {
           if (a.rating === undefined && b.rating === undefined) return 0;
           if (a.rating === undefined) return 1;
@@ -39,26 +36,22 @@ class AccomodationService {
           return b.rating - a.rating;
         })
         .slice(0, 5)
-        .map((accomodationFromApi) => new AccomodationDTO(accomodationFromApi));
+        .map(accommodationFromApi => new AccommodationDTO(accommodationFromApi));
 
       await Promise.all(
-        accomodations.map(async (accomodation) => {
-          const updatedAccomodation = await this.mongooseService.findOneAndUpdate(
-            { apiId: accomodation.apiId },
-            accomodation,
-            {
-              upsert: true,
-              new: true,
-            }
-          );
-          accomodation._id = updatedAccomodation._id;
+        accommodations.map(async accommodation => {
+          const updatedAccommodation = await this.mongooseService.findOneAndUpdate({ apiId: accommodation.apiId }, accommodation, {
+            upsert: true,
+            new: true,
+          });
+          accommodation._id = updatedAccommodation._id;
         })
       );
 
-      return accomodations;
+      return accommodations;
     } catch (err) {
       throw err;
     }
   }
 }
-module.exports = AccomodationService;
+module.exports = AccommodationService;

@@ -1,8 +1,8 @@
 const priceSchema = require("./price.schema");
 
-const { Schema, model, default: mongoose } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-const accomodationSchema = new mongoose.Schema(
+const accommodationSchema = new Schema(
   {
     apiId: { type: String, require: true },
     name: { type: String, required: true },
@@ -10,12 +10,13 @@ const accomodationSchema = new mongoose.Schema(
     city: { type: String, required: true },
     rating: { type: Number },
     amenities: [{ type: String }],
+    images: [{ type: String }],
     price: { type: priceSchema, required: true },
     isSelected: { type: Boolean, default: false },
   },
   { versionKey: false }
 );
 
-const Accomodation = model("Accomodation", accomodationSchema);
+const Accommodation = model("Accommodation", accommodationSchema);
 
-module.exports = Accomodation;
+module.exports = Accommodation;

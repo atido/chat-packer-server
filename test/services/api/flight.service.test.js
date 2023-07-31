@@ -18,7 +18,7 @@ describe("FlightService", () => {
     fetch.resetMocks();
   });
 
-  describe("getFlights", () => {
+  describe("searchFlights", () => {
     beforeEach(() => {
       fetch.mockResponse(JSON.stringify(mockApiResponse));
     });
@@ -44,7 +44,7 @@ describe("FlightService", () => {
         headers: flightService.headers,
       };
 
-      await flightService.getFlights(
+      await flightService.searchFlights(
         adultsNb,
         originIATA,
         destinationIATA,
@@ -62,7 +62,7 @@ describe("FlightService", () => {
       const departureDate = "2023-07-15";
       const returnDate = "2023-07-20";
 
-      const result = await flightService.getFlights(
+      const result = await flightService.searchFlights(
         adultsNb,
         originIATA,
         destinationIATA,
@@ -84,7 +84,13 @@ describe("FlightService", () => {
       fetch.mockRejectedValue(error);
 
       await expect(
-        flightService.getFlights(adultsNb, originIATA, destinationIATA, departureDate, returnDate)
+        flightService.searchFlights(
+          adultsNb,
+          originIATA,
+          destinationIATA,
+          departureDate,
+          returnDate
+        )
       ).rejects.toThrow(error);
     });
   });

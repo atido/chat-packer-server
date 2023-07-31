@@ -1,93 +1,93 @@
 {
-    "_id": "64b6eecb9a64b782ecf7f726",
-    "userId": "5cabe64dcf0d4447fa60f5e2",
-    "tripInfo": {
-        "departureCity": "Paris",
-        "destinationCity": "Mahe",
-        "departureDate": "2023-11-22T00:00:00.000Z",
-        "returnDate": "2023-11-30T00:00:00.000Z",
-        "_id": "64b6eecb9a64b782ecf7f727"
+  "_id": "64b6eecb9a64b782ecf7f726",
+  "userId": "5cabe64dcf0d4447fa60f5e2",
+  "tripInfo": {
+    "departureCity": "Paris",
+    "destinationCity": "Mahe",
+    "departureDate": "2023-11-22T00:00:00.000Z",
+    "returnDate": "2023-11-30T00:00:00.000Z",
+    "_id": "64b6eecb9a64b782ecf7f727"
+  },
+  "flight": {
+    "url": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310111535--32348-1-16201-2310120650|16201-2310200815--32348-1-10413-2310202000?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1",
+    "price": {
+      "total": 906,
+      "currency": "EUR",
+      "_id": "64b6eecb9a64b782ecf7f729"
     },
-    "flight": {
-        "url": "https://www.skyscanner.net/transport/flights/cdg/sez/231011/231020/config/10413-2310111535--32348-1-16201-2310120650|16201-2310200815--32348-1-10413-2310202000?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=81972907&originentityid=27539733&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1",
-        "price": {
-            "total": 906,
-            "currency": "EUR",
-            "_id": "64b6eecb9a64b782ecf7f729"
-        },
-        "go": {
-            "origin": {
-                "code": "CDG",
-                "name": "Paris Charles de Gaulle",
-                "displayCode": "CDG",
-                "_id": "64b6eecb9a64b782ecf7f72b"
-            },
-            "destination": {
-                "code": "SEZ",
-                "name": "Mahe Island",
-                "displayCode": "SEZ",
-                "_id": "64b6eecb9a64b782ecf7f72c"
-            },
-            "departure": {
-                "date": "2023-10-11T00:00:00.000Z",
-                "time": "15:35",
-                "_id": "64b6eecb9a64b782ecf7f72d"
-            },
-            "arrival": {
-                "date": "2023-10-12T00:00:00.000Z",
-                "time": "06:50",
-                "_id": "64b6eecb9a64b782ecf7f72e"
-            },
-            "stopCount": 1,
-            "duration": "13h15",
-            "carrierLogo": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
-            "_id": "64b6eecb9a64b782ecf7f72a"
-        },
-        "back": {
-            "origin": {
-                "code": "SEZ",
-                "name": "Mahe Island",
-                "displayCode": "SEZ",
-                "_id": "64b6eecb9a64b782ecf7f730"
-            },
-            "destination": {
-                "code": "CDG",
-                "name": "Paris Charles de Gaulle",
-                "displayCode": "CDG",
-                "_id": "64b6eecb9a64b782ecf7f731"
-            },
-            "departure": {
-                "date": "2023-10-20T00:00:00.000Z",
-                "time": "08:15",
-                "_id": "64b6eecb9a64b782ecf7f732"
-            },
-            "arrival": {
-                "date": "2023-10-20T00:00:00.000Z",
-                "time": "20:00",
-                "_id": "64b6eecb9a64b782ecf7f733"
-            },
-            "stopCount": 1,
-            "duration": "13h45",
-            "carrierLogo": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
-            "_id": "64b6eecb9a64b782ecf7f72f"
-        },
-        "_id": "64b6eecb9a64b782ecf7f728"
+    "go": {
+      "origin": {
+        "code": "CDG",
+        "name": "Paris Charles de Gaulle",
+        "displayCode": "CDG",
+        "_id": "64b6eecb9a64b782ecf7f72b"
+      },
+      "destination": {
+        "code": "SEZ",
+        "name": "Mahe Island",
+        "displayCode": "SEZ",
+        "_id": "64b6eecb9a64b782ecf7f72c"
+      },
+      "departure": {
+        "date": "2023-10-11T00:00:00.000Z",
+        "time": "15:35",
+        "_id": "64b6eecb9a64b782ecf7f72d"
+      },
+      "arrival": {
+        "date": "2023-10-12T00:00:00.000Z",
+        "time": "06:50",
+        "_id": "64b6eecb9a64b782ecf7f72e"
+      },
+      "stopCount": 1,
+      "duration": "13h15",
+      "carrierLogo": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+      "_id": "64b6eecb9a64b782ecf7f72a"
     },
-    "accomodation": {
-        "name": "Studio aux Portes de Paris",
-        "url": "https://www.airbnb.com/rooms/860663943931949474",
-        "city": "Gennevilliers",
-        "rating": 5,
-        "amenities": [],
-        "price": {
-            "total": 72,
-            "currency": "USD",
-            "_id": "64b6eecb9a64b782ecf7f735"
-        },
-        "_id": "64b6eecb9a64b782ecf7f734"
+    "back": {
+      "origin": {
+        "code": "SEZ",
+        "name": "Mahe Island",
+        "displayCode": "SEZ",
+        "_id": "64b6eecb9a64b782ecf7f730"
+      },
+      "destination": {
+        "code": "CDG",
+        "name": "Paris Charles de Gaulle",
+        "displayCode": "CDG",
+        "_id": "64b6eecb9a64b782ecf7f731"
+      },
+      "departure": {
+        "date": "2023-10-20T00:00:00.000Z",
+        "time": "08:15",
+        "_id": "64b6eecb9a64b782ecf7f732"
+      },
+      "arrival": {
+        "date": "2023-10-20T00:00:00.000Z",
+        "time": "20:00",
+        "_id": "64b6eecb9a64b782ecf7f733"
+      },
+      "stopCount": 1,
+      "duration": "13h45",
+      "carrierLogo": "https://logos.skyscnr.com/images/airlines/favicon/EK.png",
+      "_id": "64b6eecb9a64b782ecf7f72f"
     },
-    "destinationPhoto": "https://images.unsplash.com/photo-1583909633932-d52ea02a1a89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzMyMzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODk3MTAyODN8&ixlib=rb-4.0.3&q=80&w=400",
-    "createdAt": "2023-07-18T19:58:03.238Z",
-    "updatedAt": "2023-07-18T19:58:03.238Z",
-    "__v": 0
+    "_id": "64b6eecb9a64b782ecf7f728"
+  },
+  "accommodation": {
+    "name": "Studio aux Portes de Paris",
+    "url": "https://www.airbnb.com/rooms/860663943931949474",
+    "city": "Gennevilliers",
+    "rating": 5,
+    "amenities": [],
+    "price": {
+      "total": 72,
+      "currency": "USD",
+      "_id": "64b6eecb9a64b782ecf7f735"
+    },
+    "_id": "64b6eecb9a64b782ecf7f734"
+  },
+  "destinationPhoto": "https://images.unsplash.com/photo-1583909633932-d52ea02a1a89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzMyMzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODk3MTAyODN8&ixlib=rb-4.0.3&q=80&w=400",
+  "createdAt": "2023-07-18T19:58:03.238Z",
+  "updatedAt": "2023-07-18T19:58:03.238Z",
+  "__v": 0
 }

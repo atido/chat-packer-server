@@ -1,58 +1,58 @@
 require("dotenv").config({ path: ".env.test" });
 const fetchMock = require("jest-fetch-mock");
 
-const AccomodationService = require("../../../services/api/accommodation.service");
-const AccomodationDTO = require("../../../dto/accomodation.dto");
+const AccommodationService = require("../../../services/api/accommodation.service");
+const AccommodationDTO = require("../../../dto/accommodation.dto");
 
 beforeAll(() => {
   global.fetch = fetchMock;
 });
 
-describe("AccomodationService", () => {
-  let accomodationService;
+describe("AccommodationService", () => {
+  let accommodationService;
 
   beforeEach(() => {
-    accomodationService = new AccomodationService();
+    accommodationService = new AccommodationService();
   });
 
   afterEach(() => {
     fetch.resetMocks();
   });
 
-  describe("getAccomodation", () => {
+  describe("getAccommodation", () => {
     const mockApiResponse = {
       results: [
         {
           id: 0,
-          name: "Accomodation 0",
+          name: "Accommodation 0",
           rating: 5,
           images: ["imageUrl1", "imageUrl2"],
           price: { total: 96 },
         },
         {
           id: 1,
-          name: "Accomodation 1",
+          name: "Accommodation 1",
           rating: 4.5,
           images: ["imageUrl1", "imageUrl2"],
           price: { total: 96 },
         },
         {
           id: 2,
-          name: "Accomodation 2",
+          name: "Accommodation 2",
           rating: 3.8,
           images: ["imageUrl1", "imageUrl2"],
           price: { total: 116 },
         },
         {
           id: 3,
-          name: "Accomodation 3",
+          name: "Accommodation 3",
           images: ["imageUrl1", "imageUrl2"],
           price: { total: 126 },
         },
         {
           id: 4,
           rating: 4.2,
-          name: "Accomodation 4",
+          name: "Accommodation 4",
           images: ["imageUrl1", "imageUrl2"],
           price: { total: 80 },
         },
@@ -63,15 +63,15 @@ describe("AccomodationService", () => {
       fetch.mockResponse(JSON.stringify(mockApiResponse));
     });
 
-    it("should fetch accomodation data with correct parameters", async () => {
+    it("should fetch accommodation data with correct parameters", async () => {
       const location = "Paris";
       const checkin = "2023-07-15";
       const checkout = "2023-07-20";
       const adultsNb = 2;
 
-      await accomodationService.getAccomodations(location, checkin, checkout, adultsNb);
+      await accommodationService.searchAccommodations(location, checkin, checkout, adultsNb);
 
-      const expectedUrl = `${accomodationService.url}?${new URLSearchParams({
+      const expectedUrl = `${accommodationService.url}?${new URLSearchParams({
         location,
         checkin,
         checkout,
@@ -80,21 +80,21 @@ describe("AccomodationService", () => {
       })}`;
       const expectedOptions = {
         method: "GET",
-        headers: accomodationService.headers,
+        headers: accommodationService.headers,
       };
 
-      await accomodationService.getAccomodations(location, checkin, checkout, adultsNb);
+      await accommodationService.searchAccommodations(location, checkin, checkout, adultsNb);
 
       expect(fetch).toHaveBeenCalledWith(expectedUrl, expectedOptions);
     });
 
-    it("should return sorted and limited accomodation DTOs", async () => {
+    it("should return sorted and limited accommodation DTOs", async () => {
       const location = "Paris";
       const checkin = "2023-07-15";
       const checkout = "2023-07-20";
       const adultsNb = 2;
 
-      const result = await accomodationService.getAccomodations(
+      const result = await accommodationService.searchAccommodations(
         location,
         checkin,
         checkout,
@@ -102,37 +102,37 @@ describe("AccomodationService", () => {
       );
 
       expect(result).toEqual([
-        new AccomodationDTO({
+        new AccommodationDTO({
           id: 0,
-          name: "Accomodation 0",
+          name: "Accommodation 0",
           rating: 5,
           images: ["imageUrl1", "imageUrl2"],
           price: { total: 96 },
         }),
-        new AccomodationDTO({
+        new AccommodationDTO({
           id: 1,
-          name: "Accomodation 1",
+          name: "Accommodation 1",
           rating: 4.5,
           images: ["imageUrl1", "imageUrl2"],
           price: { total: 96 },
         }),
-        new AccomodationDTO({
+        new AccommodationDTO({
           id: 4,
-          name: "Accomodation 4",
+          name: "Accommodation 4",
           rating: 4.2,
           images: ["imageUrl1", "imageUrl2"],
           price: { total: 80 },
         }),
-        new AccomodationDTO({
+        new AccommodationDTO({
           id: 2,
-          name: "Accomodation 2",
+          name: "Accommodation 2",
           rating: 3.8,
           images: ["imageUrl1", "imageUrl2"],
           price: { total: 116 },
         }),
-        new AccomodationDTO({
+        new AccommodationDTO({
           id: 3,
-          name: "Accomodation 3",
+          name: "Accommodation 3",
           images: ["imageUrl1", "imageUrl2"],
           price: { total: 126 },
         }),
@@ -149,7 +149,7 @@ describe("AccomodationService", () => {
       fetch.mockRejectedValue(error);
 
       await expect(
-        accomodationService.getAccomodations(location, checkin, checkout, adultsNb)
+        accommodationService.searchAccommodations(location, checkin, checkout, adultsNb)
       ).rejects.toThrow(error);
     });
   });

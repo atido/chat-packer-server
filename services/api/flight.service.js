@@ -15,7 +15,7 @@ class FlightService {
     this.mongooseService = new MongooseService(FlightModel);
   }
 
-  async getFlights(adultsNb, originIATA, destinationIATA, departureDate, returnDate) {
+  async searchFlights(adultsNb, originIATA, destinationIATA, departureDate, returnDate) {
     try {
       const fullUrl = `${this.url}?${new URLSearchParams({
         adults: adultsNb,
