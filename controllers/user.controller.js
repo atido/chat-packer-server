@@ -15,14 +15,14 @@ async function updateUser(req, res, next) {
   const { email, password, username } = req.body;
 
   const result = AuthValidator.validateSignup(email, password, username);
-  if (!result.success) return res.status(400).json({ errorMessage: result.message });
+  if (!result.success) return res.status(400).json({ message: result.message });
 
   try {
     const userToUpdate = await userServiceInstance.getUserById(req.payload.user._id);
-    if (!userToUpdate) return res.status(400).json({ errorMessage: 'User not found.' });
+    if (!userToUpdate) return res.status(400).json({ message: 'User not found.' });
 
     const isOtherUserWithSameUsername = await userServiceInstance.checkOtherUserWithSameUsername(req.payload.user._id, username);
-    if (isOtherUserWithSameUsername) return res.status(400).json({ errorMessage: 'User already exist with the same username.' });
+    if (isOtherUserWithSameUsername) return res.status(400).json({ message: 'User already exist with the same username.' });
 
     const updatedUser = await userServiceInstance.updateUser(req.payload.user._id, email, password, username);
     return res.status(202).json({
@@ -35,7 +35,7 @@ async function updateUser(req, res, next) {
 
 async function uploadAvatar(req, res, next) {
   if (!req.file) {
-    return res.status(400).json({ errorMessage: 'File is missing. Please include a file to upload.' });
+    return res.status(400).json({ message: 'File is missing. Please include a file to upload.' });
   }
   return res.status(202).json({ fileUrl: req.file.path });
 }

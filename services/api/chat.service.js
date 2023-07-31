@@ -4,25 +4,26 @@ const { createMachine, interpret } = require('xstate');
 const { waitFor } = require('xstate/lib/waitFor');
 const FlightService = require('./flight.service');
 const AccommodationService = require('./accommodation.service');
+const TripService = require('../trip.service');
 const { addContentToConversation, verifyObjectComplete, isNull } = require('../../utils/conversation');
 
 class ChatService {
   constructor() {
     this.stateMachine = createMachine(
       {
-        /** @xstate-layout N4IgpgJg5mDOIC5QGEAWBDALgBXQYwGswAnAWX1QEsA7MAOgEkIAbMAYlIFEBlbgQQDinANoAGALqJQABwD2sSpkqzqUkAA9EAdgAsATjp6ATAEYAHFoCsZgGxHRRgDQgAnohMmDNnZ9F67AMxaWh4mAL5hzmhYuIQk5HhUtHQAKsSU0gzUAGayyLLMrHiYkGwQKvQ0AG6yRHTVtWAAtAC2UBAEomKSSCByCkoqapoIBqIBAfYBJkaWzm4Ilg50WqKWpuM6ATYmWgERURg4+ERkFDT0aRlZufmFYMWl5ckNda-NbR1dJj0y8orKVS9EYBMwBQxmHQ6ByTUR2EzjeaIMwmOhLUQY0RmCwmSx4swHEDRY5xM6JC6pdKZHJ5ApFEoQNgkYiyYh0aTMLC5YgterUGpEVrtTrdNT9AFDYHuHRGOiiHy6Sx6HRaYyeMxIhDbMyGXYooxGMF7IyE4mxU4JJL0AByYEgpFZYAAImBMOhKMxYGUKnyBZV+Y0mmZ1HgAK5dCRi-6DIGgEF6cF6SHQoyw+GI1yIIw6HXZvRJoJaIx2Ix7U1Hc3xc7JW32x0ut0er3M1nszmYbm895BkPh0W9cUx4aIAIJiFQmH2dMBTX2UQrfT5yzmVMefaRIkVk5V8nJABizEoUFQmD4sAUsDd1Dw9AASmAAI6huBKahQM8Xq83jg8fhCft-AMgLDggNhjlo+oqri-i7Homo2EsdBzusuw5jKAQ6OWMTbmSVp0AeR4nh+lCXug170GgDwEDQUD3hyLjei8AZvMxzTqKIABW6hQABfTRsBUoIDMohaHQi56HiGyiCYObwTY86phJFiQiJVhYSSFrVvQBHHqe54kV+FGoFRNF0cwDHPP6fq+oG7FcTxPxRkBkpxu48qiYa+aGtYWjyTOmYIGYyp0DYFjLtYOYyQh6mVrhFI6UR+mkeRdDcGA6DELuUCMVZjQ2YK6DsZgLi8YOAmuUJEHzhY+hYjBJg2BM8HZnQDUyTmo4hGsBIbmaOGWvFh66cRyU3nQADq7qvlAe6sml9KAj+vCCCIkYDvxLkaFmEyWHQZgGjMlhFjo3j+PB1iGMuuLysYtgTDF-VafhQ2JZ+ZFjZRhA0fNDwxjl+W5YKlgEC4NjMKVG2xltCCrqJOhHY1CLjMuBqakmqK7GsejyhiQVrA9pIDfuL16W9KWfdRb4-cUi2WQDANNMDoPg4563OVDIzZkESG7DYqzY+MMlaJqljyXKwR87VBoSQTmm7vQfB4HgsgtC0sgQFggIjYZdD3k+L40dr73sFwy3-mtgEShz2iQisNjyRJ5h6AiUKaiYGE2Gi2P29YoW2GWvVboTT2K8rqvq5rKhG+TxlfW+ZkWT67wM9kATSFoPEW3x7Mge70ni2YR2F7opiF27ASiyFRh6Hsng7KXPWHNhwfy3Qocq2rGsxtHH2x5TtFgPR-3J92qfpw5vzZ1buel4YyrWJ53jCwFMnLis7shD4HgJiagfN3LeHt+HXda0lOtpRlWXD6xDNmA+LQ6JQEM54JngQWJujQhJ1dWLo5cGkhTE2Y8SNWCLLHch8lYdwjt3M+xsJpTRorNYg1M-qmz-KtSeZVNqc3hjoVqIRQoiR8IacukxDCC28PJBwOYbDgLiskI+ndI7UB7kZEyVMwALRUNfay3YmZaHBlnbB1sYb5nwcqcwvksRYjsG7eGqIQhBBkqEHe9CiYKygcfFhbC6AU2+lw36tMk4334SDQRwhWaWyHIJUsGExIiVsNJHwfNl4LBmOQjE7sXZeN2OuDc1B1ZwDUH1FuVonLT0Ek0UEhh7aqlClYTUTRPaYkxFvFEJ0PDqKekwVgESbEVQap7Sw0xiylmsIXNYTgV4yjoNqFUphUzBCyXvDSECKRXGpLcOkv1ID5PKtDBEhc0TV1HMoiwflZx+DntMSYhdDSjnttk1utYIAOmIM6V07pPT9JwYgBGKxVgYQCH4IZnhNTTE9jKBCCZ3Y4l0MsvCCVSYGWNrs0RFdPYITsGYOEklly2E1A0tEEs9h+UmDmSwjzBqEReaNO8j5nyXkNnA8i7yQLQnwd8w0fz1gApsPBfQEIlLbCkdiOhrTYoaOerC3R+j46D3MuiwSFg4ZwlTHifw9g8SEoMEmElOxlK2GhcTWlqKxoX0ykkKAzLCkqhSbiPEDUIKqiVPBCuKxRwRW2A4XmIrtIk10ZNAEb5kGoIGSIkC9goR7RCPmZ2R0v46HgiEPaW8K7FmhI1TClLHqt2eXSvuBjuFQ0tbYpU+DDR8xEuYEpmxeXEoXo0yRu8m5tIYZosOzDYFkxvLK6GGF5y+R2O7Q0h03btTRNJE5ztpJC1TZufe7TGFaOzafXNCL9bIrfGw-NIJsR2xLXM8tK8JiewsDXGSsw9goihb6sJFImEwPba8mOHCB70T7YgfwOpRxDO2LMMC5zR0nTqaqIswRRyplmPqturbl1R3FfQSVWUt1CSOrKKRElxjBEIRqUd5CZg10NDmOEOw51pqpSHe9J9H0doQSamac1DE002mGiqBoJhohmPtaSxCOXlzxFXYDEF5WeFvUu2DrCn16KDZwkNb7iw1xWN+j9DgliQnLvDPauwDRgUatJGut7ODUAgAAeWyPkfkJBYAsLffoHUEFfl4ZrhJHYbsiy7qVSiGuEF8z+LCEAA */
+        /** @xstate-layout N4IgpgJg5mDOIC5QGEAWBDALgBXQYwGswAnAWX1QEsA7MAOgHV1LMaoAxAe2IBVjKADgElqAM04BiUgFEAyrICCAcWkBtAAwBdRKAGdYLSp2o6QAD0QB2AGwBOOtYCMAZnXPLj9bfcBWADQgAJ6IALT2ABwALOExturWluoATEk+4c4AvhkBaFi4hCTkeFS0dHyCIuLInAA2NWB4mJASEMb0NABunER0nd1gIQC2UBAE6hraSCB6BqzGphYI9m7OSW6OqQHBCD7JdIk+SZ7Okc5OlpnZILk4+ERkFDT05cJinNV1DU0QLW291F0en0iEMRmNVI5Jrp9IZ5lNFo4onQfJFPJEkrZIj5rEc3FtEM5wkk6ISEo5bNZ3I4fNisjkMLcCg9ik8yvxXlVavVGs0SMRuHQBDUsOJiIN-oCBsNRuMtKYZrCTPDEI5qY46Op1D5bNijuEbHigqFCXQYpZLElrIcjtYVj46dcGfl7kUSvQAHJgSCkbhgAAiYEwzBqsF+pWB7QB-RC4TMeAArrKodMYXMlaBFs5vHRbFFIslVvFcc58QgktE6OXbLn3BacUkLg6bs7Co9Sp7vb6A0HKCGJHyBUKRdxxRGY3HExN5amjOnzATs7nIvmkoWccdS2t1PtItWdYjV6rLvS8ndWyzSuwapQoKhMApYAZYEHqHh6AAlMAAR3jcFY1CgB8nxfN8pDkRQVCnKYFTTBZEDsZx9nCDZIg8bVzlsUsrW3LdDkcSxonRE4mydM9mTdOgrxvO8gMoZ90Ffeg0AaAg2E-IVAjDSNJQlaMzHUAArMwoCg6FZlnOCEA2dRLDoXdqxpXF1EcaIsNtSsszSSwohkyx7SuZsyNdVkqNve9HzokCmNQFi2LADiuN4oEoxBfihJEyFp3EuEMxVdRUMrcJqyScItNtEsjQQILIgcfUfGpKJkMiK0SNPJljMva8zNo+jGLoWQwHQYgLygRyIycgZ0H4zBAlElNvLnBFtO3fVd3UIKnEcSkIu2HEYq6lToizDwtXCVLGRdNt6FMmiLNyt9GGYf8OG4AruTTMD5GUNQ5WgmcfPnMtnGcHxTRSDYfAtZLd2sLC0hzeLqX82wQu68aW3Ikystm4CGIW5jCDYNavlnMqXO46MfAIQJrBqOqYIk5UjvwuTLspTw3HilJS1zdV8K1OJ83auJ9JPCbzwombzN+vKAdYgDgcaUHWnDcGKpCKGYbhzy9oayTy3cSt8ISLxNWcFTLFLbFt10hI2pSHV3qMqa6AUPA8E4QZBk4CAsFnHKrLoT8fz-NgDb+sBNognbkwRg7FnCSkNROAbtR8E7l1LFwaX2YnDk1LrLFzJX0pVtWNa1nW9eMc3aZswGAPYmpOJZiHnMlEJRGcARLBE3axMVSSXCDklkusZdc386xQq9s5ToI8JlMbzF1mPR00smi96HDzXtd1tNY-++P6agJOU7+cqxyznOPNt-bGpVDFtx1NGsXcLx-EihL+vLmwsy6pxMRDzuKJ7yP+-1ubDYKoqSrBnix3CL9BkiSh4fn-mtWsHdyz07xbRkpEWu4sSSInFvEIKiJFYGVIqHLuqt1a9yjgPK+FtFqGAAlwYgjMNoyC2pBfO9VC5I1SKsOSw1UIS3drXdEGojhYhksdeIjhj4U1ZGfPu0dqCD2srZBmYB1rMwnmzMcnNLBw0IXbBeZZCZ0A2K4EK6JkobC9mhEkhJjgGjOEfGBHc2GlA4cgy+NMh58KgDgoRrMH7gw5tDcREI558xIchYkCRtSWhREHBsXtyx43JOhd2GIMRjV0eTT6pRZDoA6GwF499+js05uECRjjiG+SkuidU5ZdhEmiFXGuW8oiIVzLmauXV8w4n0lcagOs4CmEMnAt0XlUmHRCCaCkCQKRxVLCEDY39CTmg8edcKkRWHhPoEwDBK1eDskqJwJpsEkbkhlikG0Qdq56R8aac0CQTirFsOaVElhRkZWeDMt4Hx1qQHmYjNJnhQrIgxFmKk+pwqbi8DmbwLgQqHHSO045KsOwQB9MQf0gZgzwF5s0xYaN9iJF2V4O55JSzi2-uiK0nz+n4RGaEj6JzKLfWppZC21z7YEmxA4XUjcrSHHio7UsqFiSXRsAROICtdht3qSfL61FCXzQ-N+X8z4zaoMYiS6R+YYpWhxFSxStLbqRXLvYYpaQziIm0o7f58CqY8LoHTOyHExWSX1LJcpq4aQUjWDSLCu4cxBRVU4fUMRrCaspgSnVN9iolCgIaxZqFv7KRpPFBI+odSYQVSdfYmlCm2iODYF13LsoioWhM5aWCLEHSkZ-ZcWzyTVmpARLwQCFUeFNKib2lpynERxcrLVbqk28ITuYgRIMM0fxIdqGKr1EgeFCq4E41qlV2qJEcDEqIkjxoMYg8+XCeE+rSaiZYLs1ldK3tSRCh8Al7OCRO7uU7OEoJMfyk2QqAKzshQs+dCRnaHM6RsreJxTrVkbmLOI5JsVk1xWHPdRiY71t1cPfVyc52HTRN-dFT11iYiRfen2u5G4uH1GsLEO6EER33cYoleUPUlWAwibCqNbSB1+dYauNDMm5JUk4E4BEUOGIvr+w96DU2rWbUzVtTi0mHnVM1J18UzgXE3tsFw5cdzwazI3U4XVaPfvo9wv9er+GCPY1CxADYbAanRquW0cUoi1xRDmE6fGN7pBSChyJ0SAIvFwyqM4MVMbUgqaoshZxkLlyLKTduYS8XSGoBAAA8qIaoAISCwC4dZqSWZtxuO0hdL2OoZbIVzI7REhxkNZAyEAA */
         id: 'ChatPackerMachine',
-        initial: 'Idle',
+        initial: 'WaitingForTripInfo',
         context: {
           tripInfo: null,
           conversation: null,
           response: null,
-          errorMessage: null,
+          message: null,
           flightIds: null,
           accommodationIds: null,
         },
         states: {
-          Idle: {
+          WaitingForTripInfo: {
             on: {
               MESSAGE: {
                 target: 'TripInfoCollected',
@@ -30,10 +31,12 @@ class ChatService {
               },
             },
           },
+
           TripInfoCollected: {
             invoke: {
               src: 'extractTripInfo',
               id: 'invoke-mgdk0',
+
               onDone: [
                 {
                   target: '#ChatPackerMachine.FlightAssistance.RequestingAssistance',
@@ -44,30 +47,32 @@ class ChatService {
                   target: 'NeedMoreDetails',
                 },
               ],
-              onError: [
-                {
-                  target: 'Idle',
-                },
-              ],
+
+              onError: {
+                target: 'WaitingForTripInfo',
+                actions: 'collectError',
+              },
             },
           },
+
           NeedMoreDetails: {
             invoke: {
               src: 'sendConversation',
               id: 'invoke-8xcu0',
               onDone: [
                 {
-                  target: 'Idle',
+                  target: 'WaitingForTripInfo',
                   actions: 'collectResponse',
                 },
               ],
               onError: [
                 {
-                  target: 'Idle',
+                  target: 'WaitingForTripInfo',
                 },
               ],
             },
           },
+
           FlightAssistance: {
             initial: 'RequestingAssistance',
             states: {
@@ -134,6 +139,7 @@ class ChatService {
               },
             },
           },
+
           AccommodationAssistance: {
             initial: 'RequestingAssistance',
             states: {
@@ -158,7 +164,7 @@ class ChatService {
                       cond: 'isOK',
                     },
                     {
-                      target: '#ChatPackerMachine.EndOfConversation',
+                      target: '#ChatPackerMachine.SavingTrip',
                     },
                   ],
                 },
@@ -190,7 +196,7 @@ class ChatService {
                   id: 'invoke-5ky7l',
                   onDone: [
                     {
-                      target: '#ChatPackerMachine.EndOfConversation',
+                      target: '#ChatPackerMachine.SavingTrip',
                       cond: 'isSelectionAccommodationOK',
                       actions: 'saveAccommodationSelection',
                     },
@@ -200,6 +206,20 @@ class ChatService {
               },
             },
           },
+
+          SavingTrip: {
+            invoke: {
+              src: 'createTrip',
+              id: 'invoke-5ky8l',
+              onDone: [
+                {
+                  target: 'EndOfConversation',
+                  actions: 'tellTripCreated',
+                },
+              ],
+            },
+          },
+
           EndOfConversation: {
             type: 'final',
           },
@@ -219,6 +239,9 @@ class ChatService {
           collectResponse: (context, event) => {
             context.response = event.data;
           },
+          collectError: (context, event) => {
+            context.response = 'error occured';
+          },
           askToUserFlightAssistance: (context, event) => {
             context.response = addContentToConversation(context.conversation, this.askToUser(chatConfiguration.askIfNeedAssistanceForFlight), 'thread');
           },
@@ -230,6 +253,9 @@ class ChatService {
           },
           saveAccommodationSelection: (context, event) => {
             context.tripInfo.accommodation = context.accommodationIds[event.data - 1];
+          },
+          tellTripCreated: (context, event) => {
+            context.response = addContentToConversation(context.conversation, this.askToUser(chatConfiguration.tellTripCreated), 'thread');
           },
         },
         services: {
@@ -255,6 +281,9 @@ class ChatService {
             context.accommodationIds = responseFromApi.map(el => el._id);
             context.conversation = addContentToConversation(context.conversation, responseFromApi, 'accommodationCardGroup');
             return addContentToConversation(context.conversation, this.askToUser(chatConfiguration.askForSelection), 'thread');
+          },
+          createTrip: (context, event) => {
+            return this.tripServiceInstance.createTrip('64af06df1a5fd4904ed2ff44', context.tripInfo, context.tripInfo.flight, context.tripInfo.accommodation);
           },
           sendConversation: (context, event) => {
             return this.sendConversation(context.conversation);
@@ -296,6 +325,7 @@ class ChatService {
       .start();
     this.flightServiceInstance = new FlightService();
     this.accommodationServiceInstance = new AccommodationService();
+    this.tripServiceInstance = new TripService();
   }
 
   askToUser(configuration) {
