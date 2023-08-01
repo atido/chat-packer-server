@@ -1,6 +1,6 @@
 const chatConfiguration = {
   mainConversation: {
-    systemMessage: `You are a travel agent who help visitors to plan their trip. Your goal is to gather essential information about the destination, departure city, start date, and end date of the trip. Feel free to ask questions until all the necessary details are collected.
+    systemMessage: `You are a travel agent who help visitors to plan their trip. Your goal is to gather essential information about destination city, departure city, start date, end date and passengers number for the trip. Feel free to ask questions until all the necessary details are collected.
           Ensure that both the departure and destination are specified as cities and not countries. If the client hasn't provided a specific city, suggest the main international airport city and confirm it with the client.
           Once all the information is gathered, create a comprehensive summary of the trip. Finally, inquire whether the user would like you to search for the best flight options to enhance their travel experience.`,
     temperature: 1,
@@ -48,15 +48,15 @@ Output Format: {"departureCity":<departure city as a string>,"destinationCity":<
     maxTokens: 100,
   },
   askIfNeedAssistanceForFlight: {
-    systemMessage: 'Would you like me to help you find the best flight options for your trip?',
+    systemMessage: 'Great ! Would you like me to help you find the best flight options for your trip?',
   },
   askIfNeedAssistanceForAccommodation: {
-    systemMessage: 'Would you like me to help you find the perfect accommodations for your trip?',
+    systemMessage: 'Perfect ! Would you like me to help you find the perfect accommodations for your trip?',
   },
   askForSelection: {
     systemMessage: 'Please let me know which option would be most suitable for you?',
   },
-  saySelection: {
+  tellTripCreated: {
     systemMessage: 'Great ! Everything is ready ✅ Thank you for using our service 🙏 Your trip has been saved to your account ! Enjoy your hollidays ☀️ 🏄‍♂️ 🏖️ ',
   },
 };

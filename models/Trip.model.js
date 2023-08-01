@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const itinerarySchema = new Schema({
   mdText: { type: String },
@@ -14,10 +14,10 @@ const tripInfoSchema = new Schema({
 
 const tripSchema = new Schema(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     tripInfo: { type: tripInfoSchema, required: true },
-    flight: { type: Schema.Types.ObjectId, ref: "Flight", required: true },
-    accommodation: { type: Schema.Types.ObjectId, ref: "Accommodation", required: true },
+    flight: { type: Schema.Types.ObjectId, ref: 'Flight' },
+    accommodation: { type: Schema.Types.ObjectId, ref: 'Accommodation' },
     itinerary: { type: itinerarySchema },
     destinationPhoto: { type: String, required: true },
   },
@@ -27,6 +27,6 @@ const tripSchema = new Schema(
   }
 );
 
-const Trip = model("Trip", tripSchema);
+const Trip = model('Trip', tripSchema);
 
 module.exports = Trip;
