@@ -59,6 +59,12 @@ Output Format: {"departureCity":<departure city as a string>,"destinationCity":<
   tellTripCreated: {
     systemMessage: 'Great ! Everything is ready ✅ Thank you for using our service 🙏 Your trip has been saved to your account ! Enjoy your hollidays ☀️ 🏄‍♂️ 🏖️ ',
   },
+  tellErrorMessage: {
+    systemMessage: 'Sorry, there was an error sending your message ⚠️ Please try again',
+  },
+  tellErrorService: {
+    systemMessage: 'Sorry, our service is temporary unavailable for saving your trip ⚠️ Please try again later',
+  },
 };
 
 module.exports = chatConfiguration;

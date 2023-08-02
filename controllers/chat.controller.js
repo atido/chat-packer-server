@@ -1,29 +1,20 @@
 const ChatService = require('../services/api/chat.service');
 const chatServiceInstance = new ChatService();
-const initialMessages = require('../data/chat.init.json');
-const { addContentToConversation } = require('../utils/conversation');
-
-async function getInitialMessages(req, res, next) {
-  try {
-    return res.status(200).json(initialMessages);
-  } catch (err) {
-    throw err;
-  }
-}
 
 async function events(req, res, next) {
   try {
-    const { type, params } = req.body;
-    let { conversation } = req.body;
+    const { type, message } = req.body;
 
-    if (params.message) conversation = addContentToConversation(conversation, { role: 'user', content: params.message }, 'thread');
+    if (!req.session.currentState) {
+      console.log('absent de la session');
+      req.session.currentState = { state: 'initial' };
+    } else console.log('current state in session:', req.session.currentState);
 
-    const response = await chatServiceInstance.events(type, conversation);
-
+    const response = await chatServiceInstance.events(type, message);
     return res.status(200).json(response);
   } catch (err) {
-    throw err;
+    throw next(err);
   }
 }
 
-module.exports = { getInitialMessages, events };
+module.exports = { events };

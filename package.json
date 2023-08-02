@@ -24,7 +24,9 @@
     "multer-storage-cloudinary": "^4.0.0",
     "openai": "^3.3.0",
     "unsplash-js": "^7.0.18",
-    "xstate": "^4.38.2"
+    "xstate": "^4.38.2",
+    "express-session": "^1.17.3",
+    "connect-mongo": "^5.0.0"
   },
   "devDependencies": {
     "@flydotio/dockerfile": "^0.3.3",

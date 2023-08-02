@@ -1,33 +1,45 @@
 const { Configuration, OpenAIApi } = require('openai');
 const chatConfiguration = require('../../config/chat.configuration');
-const { createMachine, interpret } = require('xstate');
+const { createMachine, interpret, State } = require('xstate');
 const { waitFor } = require('xstate/lib/waitFor');
 const FlightService = require('./flight.service');
 const AccommodationService = require('./accommodation.service');
 const TripService = require('../trip.service');
 const { addContentToConversation, verifyObjectComplete, isNull } = require('../../utils/conversation');
+const initMessages = require('../../data/chat.init.json');
 
 class ChatService {
   constructor() {
     this.stateMachine = createMachine(
       {
-        /** @xstate-layout N4IgpgJg5mDOIC5QGEAWBDALgBXQYwGswAnAWX1QEsA7MAOgHV1LMaoAxAe2IBVjKADgElqAM04BiUgFEAyrICCAcWkBtAAwBdRKAGdYLSp2o6QAD0QB2AGwBOOtYCMAZnXPLj9bfcBWADQgAJ6IALT2ABwALOExturWluoATEk+4c4AvhkBaFi4hCTkeFS0dHyCIuLInAA2NWB4mJASEMb0NABunER0nd1gIQC2UBAE6hraSCB6BqzGphYI9m7OSW6OqQHBCD7JdIk+SZ7Okc5OlpnZILk4+ERkFDT05cJinNV1DU0QLW291F0en0iEMRmNVI5Jrp9IZ5lNFo4onQfJFPJEkrZIj5rEc3FtEM5wkk6ISEo5bNZ3I4fNisjkMLcCg9ik8yvxXlVavVGs0SMRuHQBDUsOJiIN-oCBsNRuMtKYZrCTPDEI5qY46Op1D5bNijuEbHigqFCXQYpZLElrIcjtYVj46dcGfl7kUSvQAHJgSCkbhgAAiYEwzBqsF+pWB7QB-RC4TMeAArrKodMYXMlaBFs5vHRbFFIslVvFcc58QgktE6OXbLn3BacUkLg6bs7Co9Sp7vb6A0HKCGJHyBUKRdxxRGY3HExN5amjOnzATs7nIvmkoWccdS2t1PtItWdYjV6rLvS8ndWyzSuwapQoKhMApYAZYEHqHh6AAlMAAR3jcFY1CgB8nxfN8pDkRQVCnKYFTTBZEDsZx9nCDZIg8bVzlsUsrW3LdDkcSxonRE4mydM9mTdOgrxvO8gMoZ90Ffeg0AaAg2E-IVAjDSNJQlaMzHUAArMwoCg6FZlnOCEA2dRLDoXdqxpXF1EcaIsNtSsszSSwohkyx7SuZsyNdVkqNve9HzokCmNQFi2LADiuN4oEoxBfihJEyFp3EuEMxVdRUMrcJqyScItNtEsjQQILIgcfUfGpKJkMiK0SNPJljMva8zNo+jGLoWQwHQYgLygRyIycgZ0H4zBAlElNvLnBFtO3fVd3UIKnEcSkIu2HEYq6lToizDwtXCVLGRdNt6FMmiLNyt9GGYf8OG4AruTTMD5GUNQ5WgmcfPnMtnGcHxTRSDYfAtZLd2sLC0hzeLqX82wQu68aW3Ikystm4CGIW5jCDYNavlnMqXO46MfAIQJrBqOqYIk5UjvwuTLspTw3HilJS1zdV8K1OJ83auJ9JPCbzwombzN+vKAdYgDgcaUHWnDcGKpCKGYbhzy9oayTy3cSt8ISLxNWcFTLFLbFt10hI2pSHV3qMqa6AUPA8E4QZBk4CAsFnHKrLoT8fz-NgDb+sBNognbkwRg7FnCSkNROAbtR8E7l1LFwaX2YnDk1LrLFzJX0pVtWNa1nW9eMc3aZswGAPYmpOJZiHnMlEJRGcARLBE3axMVSSXCDklkusZdc386xQq9s5ToI8JlMbzF1mPR00smi96HDzXtd1tNY-++P6agJOU7+cqxyznOPNt-bGpVDFtx1NGsXcLx-EihL+vLmwsy6pxMRDzuKJ7yP+-1ubDYKoqSrBnix3CL9BkiSh4fn-mtWsHdyz07xbRkpEWu4sSSInFvEIKiJFYGVIqHLuqt1a9yjgPK+FtFqGAAlwYgjMNoyC2pBfO9VC5I1SKsOSw1UIS3drXdEGojhYhksdeIjhj4U1ZGfPu0dqCD2srZBmYB1rMwnmzMcnNLBw0IXbBeZZCZ0A2K4EK6JkobC9mhEkhJjgGjOEfGBHc2GlA4cgy+NMh58KgDgoRrMH7gw5tDcREI558xIchYkCRtSWhREHBsXtyx43JOhd2GIMRjV0eTT6pRZDoA6GwF499+js05uECRjjiG+SkuidU5ZdhEmiFXGuW8oiIVzLmauXV8w4n0lcagOs4CmEMnAt0XlUmHRCCaCkCQKRxVLCEDY39CTmg8edcKkRWHhPoEwDBK1eDskqJwJpsEkbkhlikG0Qdq56R8aac0CQTirFsOaVElhRkZWeDMt4Hx1qQHmYjNJnhQrIgxFmKk+pwqbi8DmbwLgQqHHSO045KsOwQB9MQf0gZgzwF5s0xYaN9iJF2V4O55JSzi2-uiK0nz+n4RGaEj6JzKLfWppZC21z7YEmxA4XUjcrSHHio7UsqFiSXRsAROICtdht3qSfL61FCXzQ-N+X8z4zaoMYiS6R+YYpWhxFSxStLbqRXLvYYpaQziIm0o7f58CqY8LoHTOyHExWSX1LJcpq4aQUjWDSLCu4cxBRVU4fUMRrCaspgSnVN9iolCgIaxZqFv7KRpPFBI+odSYQVSdfYmlCm2iODYF13LsoioWhM5aWCLEHSkZ-ZcWzyTVmpARLwQCFUeFNKib2lpynERxcrLVbqk28ITuYgRIMM0fxIdqGKr1EgeFCq4E41qlV2qJEcDEqIkjxoMYg8+XCeE+rSaiZYLs1ldK3tSRCh8Al7OCRO7uU7OEoJMfyk2QqAKzshQs+dCRnaHM6RsreJxTrVkbmLOI5JsVk1xWHPdRiY71t1cPfVyc52HTRN-dFT11iYiRfen2u5G4uH1GsLEO6EER33cYoleUPUlWAwibCqNbSB1+dYauNDMm5JUk4E4BEUOGIvr+w96DU2rWbUzVtTi0mHnVM1J18UzgXE3tsFw5cdzwazI3U4XVaPfvo9wv9er+GCPY1CxADYbAanRquW0cUoi1xRDmE6fGN7pBSChyJ0SAIvFwyqM4MVMbUgqaoshZxkLlyLKTduYS8XSGoBAAA8qIaoAISCwC4dZqSWZtxuO0hdL2OoZbIVzI7REhxkNZAyEAA */
+        /** @xstate-layout N4IgpgJg5mDOIC5QGEAWBDALgBXQYwGswAnAWX1QEsA7MAOgHV1LMaoAxAe2IBVjKADgElqAM04BiUgFEAyrICCAcWkBtAAwBdRKAGdYLSp2o6QAD0QB2AGwBOOtYCMAZnXPLj9bfcBWADQgAJ6IALT2ABwALOExturWluoATEk+4c4AvhkBaFi4hCTkeFS0dHyCIuLInAA2NWB4mJASEMb0NABunER0nd1gIQC2UBAE6hraSCB6BqzGphYI9m7OSW6OqQHBCD7JdIk+SZ7Okc5OlpnZILk4+ERkFDT05cJinNV1DU0QLW291F0en0iEMRmNVI5Jrp9IZ5lNFo4onQfJFPJEkrZIj5rEc3FtEM5wkk6ISEo5bNZ3I4fNisjkMLcCg9ik8yvxXlVavVGs0SMRuHQBDUsOJiIN-oCBsNRuMtKYZrCTPDEI5qY46Op1D5bNijuEbHigqFrOo6ElIjr0bYklFjs4fHTrgz8vciiV6AA5MCQUjcMAAETAmGYNVgv1KwPaAP6IXCZjwAFdZVDpjC5krQIsbfZbC57RdbPrIibnPiEKliY5LDS1jFybZLBdHTcXYVHqUvT6-YHg5RQxI+QKhSLuOLI7H40mJvK00YM+ZEMXwsi3NZwpiMbYKYbtlWfHQq+pPEecZZwpqHVcW3c2yzSuwapQoKhMApYAZYMHqHh6AAlMAAI4JnArDUFAb4fl+P5SHIigqNOUwKumCyIHYzj7OEGyRB42rnLYZbWLsZoXkcljROiJzNs6N7Mu6dAPk+L4QZQn7oN+9BoA0BBsP+QqBOGUaShKMZmOoABWZhQAh0KzHOKEIBs6iWHQFpbjWx6ONEBEmmazg6vqURKdWVF5DRbqsgxz6vu+LFQRxqBcTxYB8QJwlAtGIKiRJUmQjOslwpmKrqNhZrrta4RpAapZGgg66RA4+o+NSUSYcWl70qZTLmfej5WcxrHsXQshgOgxB3lArmRm5AzoKJmCBNJqb+fOCKWDqdARWkhFbuaeYEYSGouMkiImqR1gmYyrrtvQllMTZBU-owzCgRw3DFdy6YwfIyhqHKiGzgFC7ls4J37EkemYeSJ1btYBHonQ3jVph1iES9ZwTa2tEWblc2QWxi2cYQbDrV8c6VR5gkxj4BCBNYNSNUhcnKsdVYqT4NjOMe9obEkZaFuqh7asFmrrlqH1mdN9E-dZf2FYD3FgSDjRg60EYQ9VITQ7D8O+ftzXyea7hmlWCReJqmPYWW2KmkZCQWskGLpU6mVTXe9AKHgeCcIMgycBAWBzvldl0P+QEgWwRv-WAW1wbtKaI4dizhJSGonI4Tjaj49qRJEZYuDS+zqOuhyau7bXhOTWWUxrWs63rBvGJbdMOUDYG8TU-Gs5D7mSiEojOAIlhSXtMmKvJLhtSSxbWD7hbBWu-gxS4hH7NER7npi6yXBlk23nRMfa7r+vpknAMpwzUDp5nfxVeO+eFz59sHS1KoYqaOrozXXuJDqftpPF7vYZSuYveSkSR6r-ea4P8cj-NxvFaV5Xg0J47hABgyRJQCPLwLWrWK3c01ZvAmiUr7JuJ11SY3SJ4NcuZg4Xz7qyAecdh6G3vlbJahgwJcGIEzTaMhtrwRLk1MuyNUirBUnpMiHhsJez9icYkw0sRKROvERwiCvqlBQUPBO1BR72UcozMAG0WYz3ZuOLmlh4YkIdivcscQD7nWSFEc0ThcZNxwiSQkxwop2HPleaiUc1Z0B4bfdBtMx5CKgPgsRbNX4Q05jDaREIl783IZhYkCRtRJEItha0lg-a9QPOSXCXsMQYgjoYlWSDSiyHQB0NgLwX79A5lzcIMi3FkMCgpdE6pzS7CJG3JcjddxRHQoWQsa5D7xFSFkK41A9ZwFMNeYx7o-LZKOiEAaFIEgUkSmWEImllJkUtBE20bgDE90+tlegTBsGrV4OySonAOnIWRuSGWKQjh9LXNWIJHVGwJBOKsBsZEqycNmWyCobwPgbUgGspGOTPARWRBiPSVJ9QljLGsHM3gXA2kOOkXplzKadggL6YgAYgwhngHzTpixN77ESCcrwLzyRlkxgA9E3VMaEg8GRUFJjZo01slbR5jsCTYgcGec5PjqwjTLNhYk6MbCjIVjqNwRK6IkoESbQCwFPwWwwexCl8jIjBRpUWakASkrOwItqXS+lTijRFty76jFSULUEanSezkM5ivkvqZSEqcT2lwmsGkd0czB3SE4Ayzt1U5U1Xyx+ZUShQENRso+g0aRJQSPqHU+EYqUn3AWfeZxho2CdTNamfL5krVwbYw6ci-5JQ1IkUBIDNRkQVfYc6yrI1jRjVTF1IqrG6uTfOVN5DtTxRtKLDwEVXAnGtQ9W1KQNiYg2CWsxaDE7lrAF6nJqJlhuzans0pKpqToScEGwipzIm9uvqgvhfLTaCpWgI4dR1izKUmVWfp+yIFYgenXcWcQz7Ltjrwu+lidUTynjuhE9cHDampOLM+GKIEBwtOeFw+o1hYmvTfft-DB1FRKu6tgz6VSEVNFiE0YdgUvXCAw1EZo26aScCcQl0Te5cPViu29FiyWFQTWwJNIjQYpt-uQzG6ozxB2dklM4Fwp0KTOPFMi-6LrBSxSB1dd6yMVonlW2D5YjkakpBsSNiUogMJRA9c1Q19KrCSCW+JiSwIvAk83eKbgkq6g41WShZxnqmrqfhmZlNpDUAgAAeVENUAEJBYB8L03pU03izwbBM5yjUmFCzO0RIcYD9SgA */
         id: 'ChatPackerMachine',
-        initial: 'WaitingForTripInfo',
+        initial: 'Idle',
         context: {
           tripInfo: null,
-          conversation: null,
-          response: null,
-          message: null,
-          flightIds: null,
-          accommodationIds: null,
+          conversation: [],
+          flightIds: [],
+          accommodationIds: [],
         },
         states: {
+          Idle: {
+            on: {
+              INIT: {
+                target: 'WaitingForTripInfo',
+                actions: 'initConversation',
+              },
+              MESSAGE: {
+                target: 'TripInfoCollected',
+                actions: 'saveMessage',
+              },
+            },
+          },
           WaitingForTripInfo: {
+            tags: 'pause',
             on: {
               MESSAGE: {
                 target: 'TripInfoCollected',
-                actions: 'saveConversation',
+                actions: 'saveMessage',
               },
             },
           },
@@ -36,7 +48,6 @@ class ChatService {
             invoke: {
               src: 'extractTripInfo',
               id: 'invoke-mgdk0',
-
               onDone: [
                 {
                   target: '#ChatPackerMachine.FlightAssistance.RequestingAssistance',
@@ -50,24 +61,24 @@ class ChatService {
 
               onError: {
                 target: 'WaitingForTripInfo',
-                actions: 'collectError',
+                actions: 'tellErrorMessage',
               },
             },
           },
 
           NeedMoreDetails: {
             invoke: {
-              src: 'sendConversation',
+              src: 'sendConversationToChatGPT',
               id: 'invoke-8xcu0',
               onDone: [
                 {
                   target: 'WaitingForTripInfo',
-                  actions: 'collectResponse',
                 },
               ],
               onError: [
                 {
                   target: 'WaitingForTripInfo',
+                  actions: 'tellErrorMessage',
                 },
               ],
             },
@@ -78,10 +89,11 @@ class ChatService {
             states: {
               RequestingAssistance: {
                 entry: 'askToUserFlightAssistance',
+                tags: 'pause',
                 on: {
                   MESSAGE: {
                     target: 'CheckingReply',
-                    actions: 'saveConversation',
+                    actions: 'saveMessage',
                   },
                 },
               },
@@ -99,6 +111,7 @@ class ChatService {
                       target: '#ChatPackerMachine.AccommodationAssistance.RequestingAssistance',
                     },
                   ],
+                  onError: { target: 'RequestingAssistance', actions: 'tellErrorMessage' },
                 },
               },
 
@@ -108,16 +121,20 @@ class ChatService {
                   id: 'invoke-ax0ty',
                   onDone: {
                     target: 'WaitingForSelection',
-                    actions: ['collectResponse'],
+                  },
+                  onError: {
+                    target: 'RequestingAssistance',
+                    actions: 'tellErrorMessage',
                   },
                 },
               },
 
               WaitingForSelection: {
+                tags: 'pause',
                 on: {
                   MESSAGE: {
                     target: 'CheckingSelection',
-                    actions: 'saveConversation',
+                    actions: 'saveMessage',
                   },
                 },
               },
@@ -135,6 +152,7 @@ class ChatService {
                     },
                     { target: '#ChatPackerMachine.FlightAssistance.Searching' },
                   ],
+                  onError: { target: 'WaitingForSelection', actions: 'tellErrorMessage' },
                 },
               },
             },
@@ -144,14 +162,14 @@ class ChatService {
             initial: 'RequestingAssistance',
             states: {
               RequestingAssistance: {
+                entry: 'askToUserAccommodationAssistance',
+                tags: 'pause',
                 on: {
                   MESSAGE: {
                     target: 'CheckingReply',
-                    actions: 'saveConversation',
+                    actions: 'saveMessage',
                   },
                 },
-
-                entry: 'askToUserAccommodationAssistance',
               },
 
               CheckingReply: {
@@ -167,6 +185,7 @@ class ChatService {
                       target: '#ChatPackerMachine.SavingTrip',
                     },
                   ],
+                  onError: { target: 'RequestingAssistance', actions: 'tellErrorMessage' },
                 },
               },
 
@@ -176,16 +195,17 @@ class ChatService {
                   id: 'invoke-8qm4i',
                   onDone: {
                     target: 'WaitingForSelection',
-                    actions: ['collectResponse'],
                   },
+                  onError: { target: 'RequestingAssistance', actions: 'tellErrorMessage' },
                 },
               },
 
               WaitingForSelection: {
+                tags: 'pause',
                 on: {
                   MESSAGE: {
                     target: 'CheckingSelection',
-                    actions: 'saveConversation',
+                    actions: 'saveMessage',
                   },
                 },
               },
@@ -202,6 +222,7 @@ class ChatService {
                     },
                     { target: '#ChatPackerMachine.AccommodationAssistance.Searching' },
                   ],
+                  onError: { target: 'WaitingForSelection', actions: 'tellErrorMessage' },
                 },
               },
             },
@@ -217,6 +238,7 @@ class ChatService {
                   actions: 'tellTripCreated',
                 },
               ],
+              onError: { target: 'EndOfConversation', actions: 'tellErrorService' },
             },
           },
 
@@ -229,24 +251,20 @@ class ChatService {
       },
       {
         actions: {
-          saveConversation: (context, event) => {
-            context.conversation = event.conversation;
+          initConversation: (context, event) => {
+            initMessages.forEach(message => (context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(message), 'thread')));
+          },
+          saveMessage: (context, event) => {
+            context.conversation = addContentToConversation(context.conversation, this.sendByUser(event.message), 'thread');
           },
           collectTripInfo: (context, event) => {
-            console.log(context, event);
             context.tripInfo = event.data.entities;
           },
-          collectResponse: (context, event) => {
-            context.response = event.data;
-          },
-          collectError: (context, event) => {
-            context.response = 'error occured';
-          },
           askToUserFlightAssistance: (context, event) => {
-            context.response = addContentToConversation(context.conversation, this.askToUser(chatConfiguration.askIfNeedAssistanceForFlight), 'thread');
+            context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.askIfNeedAssistanceForFlight.systemMessage), 'thread');
           },
           askToUserAccommodationAssistance: (context, event) => {
-            context.response = addContentToConversation(context.conversation, this.askToUser(chatConfiguration.askIfNeedAssistanceForAccommodation), 'thread');
+            context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.askIfNeedAssistanceForAccommodation.systemMessage), 'thread');
           },
           saveFlightSelection: (context, event) => {
             context.tripInfo.flight = context.flightIds[event.data - 1];
@@ -255,7 +273,13 @@ class ChatService {
             context.tripInfo.accommodation = context.accommodationIds[event.data - 1];
           },
           tellTripCreated: (context, event) => {
-            context.response = addContentToConversation(context.conversation, this.askToUser(chatConfiguration.tellTripCreated), 'thread');
+            context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.tellTripCreated.systemMessage), 'thread');
+          },
+          tellErrorMessage: (context, event) => {
+            context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.tellErrorMessage.systemMessage), 'thread_error');
+          },
+          tellErrorService: (context, event) => {
+            context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.tellErrorService.systemMessage), 'thread_error');
           },
         },
         services: {
@@ -269,7 +293,7 @@ class ChatService {
             );
             context.flightIds = responseFromApi.map(el => el._id);
             context.conversation = addContentToConversation(context.conversation, responseFromApi, 'flightCardGroup');
-            return addContentToConversation(context.conversation, this.askToUser(chatConfiguration.askForSelection), 'thread');
+            context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.askForSelection.systemMessage), 'thread');
           },
           searchAccommodations: async (context, event) => {
             const responseFromApi = await this.accommodationServiceInstance.searchAccommodations(
@@ -280,13 +304,15 @@ class ChatService {
             );
             context.accommodationIds = responseFromApi.map(el => el._id);
             context.conversation = addContentToConversation(context.conversation, responseFromApi, 'accommodationCardGroup');
-            return addContentToConversation(context.conversation, this.askToUser(chatConfiguration.askForSelection), 'thread');
+            context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.askForSelection.systemMessage), 'thread');
           },
           createTrip: (context, event) => {
             return this.tripServiceInstance.createTrip('64af06df1a5fd4904ed2ff44', context.tripInfo, context.tripInfo.flight, context.tripInfo.accommodation);
           },
-          sendConversation: (context, event) => {
-            return this.sendConversation(context.conversation);
+          sendConversationToChatGPT: async (context, event) => {
+            const filteredConversation = context.conversation.filter(el => el.component == 'thread').map(el => el.body);
+            const bodyResponse = await this.askToChatGPT(chatConfiguration.mainConversation, filteredConversation);
+            context.conversation = addContentToConversation(context.conversation, bodyResponse, 'thread');
           },
           extractTripInfo: (context, event) => {
             return this.extractTripInfo(context.conversation);
@@ -320,7 +346,6 @@ class ChatService {
     this.stateMachineService = interpret(this.stateMachine)
       .onTransition(state => {
         console.log('Current State:', state.value);
-        console.log('Response:', state.context?.response);
       })
       .start();
     this.flightServiceInstance = new FlightService();
@@ -328,8 +353,11 @@ class ChatService {
     this.tripServiceInstance = new TripService();
   }
 
-  askToUser(configuration) {
-    return { role: 'assistant', content: configuration.systemMessage };
+  sendByUser(message) {
+    return { role: 'user', content: message };
+  }
+  sendByAssistant(message) {
+    return { role: 'assistant', content: message };
   }
   async askToChatGPT(configuration, conversation = []) {
     try {
@@ -349,17 +377,6 @@ class ChatService {
         presence_penalty: 0,
       });
       return response.data.choices[0].message;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  async sendConversation(conversation) {
-    try {
-      const chatMl = conversation.filter(el => el.component == 'thread').map(el => el.body);
-
-      const response = await this.askToChatGPT(chatConfiguration.mainConversation, chatMl);
-      return addContentToConversation(conversation, response, 'thread');
     } catch (err) {
       throw err;
     }
@@ -411,14 +428,31 @@ class ChatService {
     }
   }
 
-  async events(type, conversation) {
-    this.stateMachineService.send({ type, conversation });
+  async events(type, message) {
+    try {
+      this.stateMachineService.send({ type, message });
 
-    await waitFor(this.stateMachineService, state => state.context.response || state.done);
-    const response = this.stateMachine.context.response;
-    //set response to null for next call
-    this.stateMachine.context.response = null;
-    return response;
+      const currentState = await waitFor(this.stateMachineService, state => state.hasTag('pause') || state.done);
+      const jsonState = JSON.stringify(currentState);
+
+      const stateDefinition = JSON.parse(jsonState);
+      //console.log('stateDefinition:', stateDefinition);
+
+      const previousState = State.create(stateDefinition);
+      //console.log('previousState:', previousState);
+
+      return this.stateMachine.context.conversation;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async asyncInterpret(machine, msToWait, initialState, initialEvent) {
+    const service = interpret(machine);
+    service.start(initialState);
+    if (initialEvent) {
+      service.send(initialEvent);
+    }
+    return await waitFor(service, state => state.hasTag('pause') || state.done, { timeout: msToWait });
   }
 }
 module.exports = ChatService;

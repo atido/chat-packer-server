@@ -1,26 +1,5 @@
 [
-  {
-    "body": {
-      "content": "Welcome!👋 I'm here to help you plan your dream travel ✈️ 🏝️ 🌍",
-      "role": "assistant"
-    },
-    "component": "thread",
-    "id": "2683708f-f19a-45cf-acf5-99f4b8f0d8ef"
-  },
-  {
-    "body": {
-      "content": "If you have an account with us, you might want to log in first to save our conversation 🔐 If not, no worries, we can get started!😃",
-      "role": "assistant"
-    },
-    "component": "thread",
-    "id": "514359b0-71ff-4592-b415-bbf5858e5166"
-  },
-  {
-    "body": {
-      "content": "Can you tell me about the trip or destination you'd like to take?",
-      "role": "assistant"
-    },
-    "component": "thread",
-    "id": "eb97fa25-5d8a-4dfc-b090-e37d491d7391"
-  }
+  "Welcome!👋 I'm here to help you plan your dream travel ✈️ 🏝️ 🌍",
+  "If you have an account with us, you might want to log in first to save our conversation 🔐 If not, no worries, we can get started!😃",
+  "Can you tell me about the trip or destination you'd like to take?"
 ]
