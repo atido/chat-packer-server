@@ -4,7 +4,10 @@ const userServiceInstance = new UserService();
 
 async function getUser(req, res, next) {
   try {
-    const { _id, username, email, avatar } = await userServiceInstance.getUserById(req.payload.user._id);
+    const user = await userServiceInstance.getUserById(req.payload.user._id);
+    if (!user) return res.status(400).json({ message: 'User not found.' });
+
+    const { _id, username, email, avatar } = user;
     return res.status(200).json({ _id, username, email, avatar });
   } catch (err) {
     next(err);
