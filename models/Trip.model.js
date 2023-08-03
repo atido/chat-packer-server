@@ -14,7 +14,7 @@ const tripInfoSchema = new Schema({
 
 const tripSchema = new Schema(
   {
-    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    userId: { type: Schema.Types.ObjectId, ref: 'User' },
     tripInfo: { type: tripInfoSchema, required: true },
     flight: { type: Schema.Types.ObjectId, ref: 'Flight' },
     accommodation: { type: Schema.Types.ObjectId, ref: 'Accommodation' },

@@ -28,20 +28,6 @@ Output Format: {"departureCity":<departure city as a string>,"destinationCity":<
     temperature: 0,
     maxTokens: 100,
   },
-  /*
-  askIfNeedAssistanceForFlight: {
-    systemMessage: `You are a travel agent. Ask the user if they would like assistance in finding the best flight options for their trip. You are free to modify how you inquire. Do not include greeting.`,
-    temperature: 1,
-    maxTokens: 100,
-    userMessage: "",
-  },
-  askIfNeedAssistanceForAccommodation: {
-    systemMessage: `You are a travel agent. Ask the user if they would like assistance in finding the best accommodations for their trip. You are free to modify how you inquire. Do not include greeting.`,
-    temperature: 1,
-    maxTokens: 100,
-    userMessage: "",
-  },
-  */
   extractSelection: {
     systemMessage: `You will be provided with a 'statement,' and your task is to extract the user's choice from it. If extracting the response is not possible, please return null. The expected output format should be the user's choice represented as a number`,
     temperature: 0,
@@ -58,6 +44,9 @@ Output Format: {"departureCity":<departure city as a string>,"destinationCity":<
   },
   tellTripCreated: {
     systemMessage: 'Great ! Everything is ready ✅ Thank you for using our service 🙏 Your trip has been saved to your account ! Enjoy your hollidays ☀️ 🏄‍♂️ 🏖️ ',
+  },
+  tellTripInSession: {
+    systemMessage: "Great! We are delighted that you enjoyed our service 👍 Sign up or log in now, and you'll discover the trip you just created! We look forward to seeing you soon 👋 ",
   },
   tellErrorMessage: {
     systemMessage: 'Sorry, there was an error sending your message ⚠️ Please try again',

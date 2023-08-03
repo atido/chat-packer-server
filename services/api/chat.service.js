@@ -21,6 +21,8 @@ class ChatService {
           conversation: [],
           flightIds: [],
           accommodationIds: [],
+          userId: null,
+          tripCreatedId: null,
         },
         states: {
           Idle: {
@@ -236,7 +238,6 @@ class ChatService {
               onDone: [
                 {
                   target: 'EndOfConversation',
-                  actions: 'tellTripCreated',
                 },
               ],
               onError: { target: 'EndOfConversation', actions: ['tellErrorService', 'logError'] },
@@ -273,9 +274,6 @@ class ChatService {
           saveAccommodationSelection: (context, event) => {
             context.tripInfo.accommodation = context.accommodationIds[event.data - 1];
           },
-          tellTripCreated: (context, event) => {
-            context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.tellTripCreated.systemMessage), 'thread');
-          },
           tellErrorMessage: (context, event) => {
             context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.tellErrorMessage.systemMessage), 'thread_error');
           },
@@ -310,8 +308,11 @@ class ChatService {
             context.conversation = addContentToConversation(context.conversation, responseFromApi, 'accommodationCardGroup');
             context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.askForSelection.systemMessage), 'thread');
           },
-          createTrip: (context, event) => {
-            return this.tripServiceInstance.createTrip('64af06df1a5fd4904ed2ff44', context.tripInfo, context.tripInfo.flight, context.tripInfo.accommodation);
+          createTrip: async (context, event) => {
+            const trip = await this.tripServiceInstance.createTrip(context.userId, context.tripInfo, context.tripInfo.flight, context.tripInfo.accommodation);
+            context.tripCreatedId = trip._id;
+            if (context.userId) context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.tellTripCreated.systemMessage), 'thread');
+            else context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.tellTripInSession.systemMessage), 'thread');
           },
           sendConversationToChatGPT: async (context, event) => {
             const filteredConversation = context.conversation.filter(el => el.component == 'thread').map(el => el.body);
@@ -426,19 +427,24 @@ class ChatService {
     }
   }
 
-  async events(event, session) {
+  async events(event, session, userId) {
     try {
       const stateDefinition = session.content.currentState || this.stateMachine.initialState;
-      const currentState = await this.asyncInterpret(session.id, this.stateMachine, 10_000, stateDefinition, event);
+      const currentState = await this.asyncInterpret(session.id, this.stateMachine, 10_000, stateDefinition, event, userId);
 
+      if (currentState.done) {
+        session.content.tripCreatedId = currentState.context.tripCreatedId;
+      }
       session.content.currentState = currentState;
       return currentState.context.conversation;
     } catch (err) {
       console.log(err);
     }
   }
-  async asyncInterpret(sessionId, machine, msToWait, initialStateDefinition, initialEvent) {
-    const previousState = await machine.resolveState(State.create(initialStateDefinition));
+  async asyncInterpret(sessionId, machine, msToWait, initialStateDefinition, initialEvent, userId) {
+    const previousState = State.create(initialStateDefinition);
+    if (userId) previousState.context.userId = userId;
+
     const service = interpret(machine)
       .start(previousState)
       .onTransition(state => {

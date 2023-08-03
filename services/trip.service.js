@@ -37,5 +37,12 @@ class TripService {
       throw err;
     }
   }
+  async attachTripToUser(tripId, userId) {
+    try {
+      return await this.mongooseService.findOneAndUpdate({ _id: tripId }, { userId });
+    } catch (err) {
+      throw err;
+    }
+  }
 }
 module.exports = TripService;

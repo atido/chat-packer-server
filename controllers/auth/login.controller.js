@@ -4,6 +4,8 @@ const AuthValidator = require('../../validators/auth.validators');
 
 const UserService = require('../../services/user.service');
 const userServiceInstance = new UserService();
+const TripService = require('../../services/trip.service');
+const tripServiceInstance = new TripService();
 
 async function login(req, res, next) {
   const { email, password } = req.body;
@@ -20,6 +22,14 @@ async function login(req, res, next) {
         algorithm: 'HS256',
         expiresIn: '6h',
       });
+      console.log(req.session);
+      //Check if a trip is waiting in session
+      if (req.session.tripCreatedId) {
+        await tripServiceInstance.attachTripToUser(req.session.tripCreatedId, foundUser._id);
+        // reinit the trip et the state in session
+        req.session.tripCreatedId = null;
+        req.session.currentState = null;
+      }
       return res.status(200).json({ authToken: authToken });
     } else {
       return res.status(401).json({ message: 'Unable to authenticate user' });
