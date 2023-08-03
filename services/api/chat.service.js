@@ -62,7 +62,7 @@ class ChatService {
 
               onError: {
                 target: 'WaitingForTripInfo',
-                actions: 'tellErrorMessage',
+                actions: ['tellErrorMessage', 'logError'],
               },
             },
           },
@@ -79,7 +79,7 @@ class ChatService {
               onError: [
                 {
                   target: 'WaitingForTripInfo',
-                  actions: 'tellErrorMessage',
+                  actions: ['tellErrorMessage', 'logError'],
                 },
               ],
             },
@@ -112,7 +112,7 @@ class ChatService {
                       target: '#ChatPackerMachine.AccommodationAssistance.RequestingAssistance',
                     },
                   ],
-                  onError: { target: 'RequestingAssistance', actions: 'tellErrorMessage' },
+                  onError: { target: 'RequestingAssistance', actions: ['tellErrorMessage', 'logError'] },
                 },
               },
 
@@ -125,7 +125,7 @@ class ChatService {
                   },
                   onError: {
                     target: 'RequestingAssistance',
-                    actions: 'tellErrorMessage',
+                    actions: ['tellErrorMessage', 'logError'],
                   },
                 },
               },
@@ -153,7 +153,7 @@ class ChatService {
                     },
                     { target: '#ChatPackerMachine.FlightAssistance.Searching' },
                   ],
-                  onError: { target: 'WaitingForSelection', actions: 'tellErrorMessage' },
+                  onError: { target: 'WaitingForSelection', actions: ['tellErrorMessage', 'logError'] },
                 },
               },
             },
@@ -186,7 +186,7 @@ class ChatService {
                       target: '#ChatPackerMachine.SavingTrip',
                     },
                   ],
-                  onError: { target: 'RequestingAssistance', actions: 'tellErrorMessage' },
+                  onError: { target: 'RequestingAssistance', actions: ['tellErrorMessage', 'logError'] },
                 },
               },
 
@@ -197,7 +197,7 @@ class ChatService {
                   onDone: {
                     target: 'WaitingForSelection',
                   },
-                  onError: { target: 'RequestingAssistance', actions: 'tellErrorMessage' },
+                  onError: { target: 'RequestingAssistance', actions: ['tellErrorMessage', 'logError'] },
                 },
               },
 
@@ -223,7 +223,7 @@ class ChatService {
                     },
                     { target: '#ChatPackerMachine.AccommodationAssistance.Searching' },
                   ],
-                  onError: { target: 'WaitingForSelection', actions: 'tellErrorMessage' },
+                  onError: { target: 'WaitingForSelection', actions: ['tellErrorMessage', 'logError'] },
                 },
               },
             },
@@ -239,7 +239,7 @@ class ChatService {
                   actions: 'tellTripCreated',
                 },
               ],
-              onError: { target: 'EndOfConversation', actions: 'tellErrorService' },
+              onError: { target: 'EndOfConversation', actions: ['tellErrorService', 'logError'] },
             },
           },
 
@@ -281,6 +281,9 @@ class ChatService {
           },
           tellErrorService: (context, event) => {
             context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.tellErrorService.systemMessage), 'thread_error');
+          },
+          logError: (context, event) => {
+            console.log(event.data);
           },
         },
         services: {
