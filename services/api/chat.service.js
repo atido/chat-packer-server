@@ -7,6 +7,7 @@ const AccommodationService = require('./accommodation.service');
 const TripService = require('../trip.service');
 const { addContentToConversation, verifyObjectComplete, isNull } = require('../../utils/conversation');
 const initMessages = require('../../data/chat.init.json');
+//const { chatMachine } = require('../../machine/chat.machine');
 
 class ChatService {
   constructor() {
@@ -252,7 +253,7 @@ class ChatService {
       {
         actions: {
           initConversation: (context, event) => {
-            initMessages.forEach(message => (context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(message), 'thread')));
+            if (!context.conversation.length) initMessages.forEach(message => (context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(message), 'thread')));
           },
           saveMessage: (context, event) => {
             context.conversation = addContentToConversation(context.conversation, this.sendByUser(event.message), 'thread');
@@ -328,7 +329,6 @@ class ChatService {
           isComplete: (context, event) => event.data.isComplete,
           isOK: (context, event) => event.data,
           isSelectionFlightOK: (context, event) => {
-            console.log(event.data);
             return !isNull(event.data) && event.data <= context.flightIds.length;
           },
           isSelectionAccommodationOK: (context, event) => {
@@ -343,11 +343,6 @@ class ChatService {
     });
     this.openai = new OpenAIApi(configuration);
 
-    this.stateMachineService = interpret(this.stateMachine)
-      .onTransition(state => {
-        console.log('Current State:', state.value);
-      })
-      .start();
     this.flightServiceInstance = new FlightService();
     this.accommodationServiceInstance = new AccommodationService();
     this.tripServiceInstance = new TripService();
@@ -428,30 +423,26 @@ class ChatService {
     }
   }
 
-  async events(type, message) {
+  async events(event, session) {
     try {
-      this.stateMachineService.send({ type, message });
+      const stateDefinition = session.content.currentState || this.stateMachine.initialState;
+      const currentState = await this.asyncInterpret(session.id, this.stateMachine, 10_000, stateDefinition, event);
 
-      const currentState = await waitFor(this.stateMachineService, state => state.hasTag('pause') || state.done);
-      const jsonState = JSON.stringify(currentState);
-
-      const stateDefinition = JSON.parse(jsonState);
-      //console.log('stateDefinition:', stateDefinition);
-
-      const previousState = State.create(stateDefinition);
-      //console.log('previousState:', previousState);
-
-      return this.stateMachine.context.conversation;
+      session.content.currentState = currentState;
+      return currentState.context.conversation;
     } catch (err) {
       console.log(err);
     }
   }
-  async asyncInterpret(machine, msToWait, initialState, initialEvent) {
-    const service = interpret(machine);
-    service.start(initialState);
-    if (initialEvent) {
-      service.send(initialEvent);
-    }
+  async asyncInterpret(sessionId, machine, msToWait, initialStateDefinition, initialEvent) {
+    const previousState = await machine.resolveState(State.create(initialStateDefinition));
+    const service = interpret(machine)
+      .start(previousState)
+      .onTransition(state => {
+        console.log('Session ID :', sessionId, 'Current State:', state.value);
+      });
+    if (initialEvent) service.send(initialEvent);
+
     return await waitFor(service, state => state.hasTag('pause') || state.done, { timeout: msToWait });
   }
 }
