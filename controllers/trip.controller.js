@@ -19,4 +19,13 @@ async function getTrips(req, res, next) {
   }
 }
 
-module.exports = { getTripDetail, getTrips };
+async function deleteTrip(req, res, next) {
+  try {
+    const trip = await tripServiceInstance.deleteTrip(req.params.id, req.payload.user._id);
+    return res.status(200).json(trip || {});
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { getTripDetail, getTrips, deleteTrip };
