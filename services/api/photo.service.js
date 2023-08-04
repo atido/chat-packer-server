@@ -1,4 +1,4 @@
-const { createApi } = require("unsplash-js");
+const { createApi } = require('unsplash-js');
 
 class PhotoService {
   constructor() {
@@ -9,8 +9,8 @@ class PhotoService {
 
   async getRandomPhoto(query) {
     try {
-      const result = await this.photoApi.photos.getRandom({ query, orientation: "landscape" });
-      return { photo: result.response.urls.small };
+      const result = await this.photoApi.photos.getRandom({ query, orientation: 'landscape' });
+      return { photo: result.response.urls.regular };
     } catch (err) {
       throw err;
     }

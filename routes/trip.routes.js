@@ -1,15 +1,13 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const TripController = require("../controllers/trip.controller");
+const TripController = require('../controllers/trip.controller');
 
-const { isAuthenticated } = require("../middleware/jwt.middleware");
+const { isAuthenticated } = require('../middleware/jwt.middleware');
 
 // GET /trips/:id  - Get trip detail
-router.get("/trips/:id", isAuthenticated, TripController.getTripDetail);
+router.get('/trips/:id', isAuthenticated, TripController.getTripDetail);
 
 // GET  /trips - Get trips
-router.get("/trips", isAuthenticated, TripController.getTrips);
-
-router.post("/trips", TripController.createTrip);
+router.get('/trips', isAuthenticated, TripController.getTrips);
 
 module.exports = router;

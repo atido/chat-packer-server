@@ -14,32 +14,36 @@ class EventService {
     this.chatServiceInstance = new ChatService();
   }
 
-  async events(type, message) {
-    this.stateMachineService.send({ type, message });
+  async events(event, session, userId) {
+    try {
+      const stateDefinition = session.content.currentState || this.stateMachine.initialState;
+      const currentState = await this.asyncInterpret(session.id, this.stateMachine, 10_000, stateDefinition, event, userId);
 
-    await waitFor(this.stateMachineService, state => state.hasTag('pause') || state.done);
-    return this.stateMachine.context.conversation;
-  }
-  async asyncInterpret(machine, msToWait, initialState, initialEvent) {
-    const service = interpret(machine);
-    service.start(initialState);
-    if (initialEvent) {
-      service.send(initialEvent);
+      if (currentState.done) {
+        //add trip in session if there is one
+        if (currentState.context.tripCreatedId) session.content.tripCreatedId = currentState.context.tripCreatedId;
+        //remove state in session for next trip
+        session.content.currentState = null;
+      } else {
+        session.content.currentState = currentState;
+      }
+      return currentState.context.conversation;
+    } catch (err) {
+      console.log(err);
     }
-    return await waitFor(service, state => state.hasTag('pause') || state.done, { timeout: msToWait });
   }
-  async loadStateMachine() {
-    //const stateConfig = await readCookie(request);
-    //if state in session => load from session and return
-    //const chatMachineState = await this.asyncInterpret(chatMachine, 10_000);
-    //save state in session and return
-  }
+  async asyncInterpret(sessionId, machine, msToWait, initialStateDefinition, initialEvent, userId) {
+    const previousState = State.create(initialStateDefinition);
+    if (userId) previousState.context.userId = userId;
 
-  async create(event) {
-    //const stateConfig = await readCookie(request);
-    // Convert cookie into machine state
-    // const currentState = await chatMachine.resolveState(State.create(stateConfig));
-    //const transitionState = await this.asyncInterpret(chatMachine, 10_000, currentState, event);
+    const service = interpret(machine)
+      .start(previousState)
+      .onTransition(state => {
+        console.log('Session ID :', sessionId, 'Current State:', state.value);
+      });
+    if (initialEvent) service.send(initialEvent);
+
+    return await waitFor(service, state => state.hasTag('pause') || state.done, { timeout: msToWait });
   }
 }
 

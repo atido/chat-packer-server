@@ -310,9 +310,15 @@ class ChatService {
           },
           createTrip: async (context, event) => {
             const trip = await this.tripServiceInstance.createTrip(context.userId, context.tripInfo, context.tripInfo.flight, context.tripInfo.accommodation);
-            context.tripCreatedId = trip._id;
-            if (context.userId) context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.tellTripCreated.systemMessage), 'thread');
-            else context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.tellTripInSession.systemMessage), 'thread');
+
+            if (context.userId) {
+              // user is connected -> the trip has been saved and attached to him
+              context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.tellTripCreated.systemMessage), 'thread');
+            } else {
+              // user is not connected -> the trip has been saved but not attached to him so saved for further login
+              context.tripCreatedId = trip._id;
+              context.conversation = addContentToConversation(context.conversation, this.sendByAssistant(chatConfiguration.tellTripInSession.systemMessage), 'thread');
+            }
           },
           sendConversationToChatGPT: async (context, event) => {
             const filteredConversation = context.conversation.filter(el => el.component == 'thread').map(el => el.body);
@@ -426,16 +432,20 @@ class ChatService {
       throw err;
     }
   }
-
+  //
   async events(event, session, userId) {
     try {
       const stateDefinition = session.content.currentState || this.stateMachine.initialState;
       const currentState = await this.asyncInterpret(session.id, this.stateMachine, 10_000, stateDefinition, event, userId);
 
       if (currentState.done) {
-        session.content.tripCreatedId = currentState.context.tripCreatedId;
+        //add trip in session if there is one
+        if (currentState.context.tripCreatedId) session.content.tripCreatedId = currentState.context.tripCreatedId;
+        //remove state in session for next trip
+        session.content.currentState = null;
+      } else {
+        session.content.currentState = currentState;
       }
-      session.content.currentState = currentState;
       return currentState.context.conversation;
     } catch (err) {
       console.log(err);

@@ -1,4 +1,4 @@
-const TripService = require("../services/trip.service");
+const TripService = require('../services/trip.service');
 const tripServiceInstance = new TripService();
 
 async function getTripDetail(req, res, next) {
@@ -19,20 +19,4 @@ async function getTrips(req, res, next) {
   }
 }
 
-//todo remove - do not have to be called from controller
-async function createTrip(req, res, next) {
-  try {
-    const { userId, tripInfo, flightId, accommodationId } = req.body;
-    const result = await tripServiceInstance.createTrip(
-      userId,
-      tripInfo,
-      flightId,
-      accommodationId
-    );
-    return res.status(201).json(result);
-  } catch (err) {
-    next(err);
-  }
-}
-
-module.exports = { getTripDetail, getTrips, createTrip };
+module.exports = { getTripDetail, getTrips };
