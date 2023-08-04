@@ -9,6 +9,8 @@ const chatMachine = createMachine({
     conversation: [],
     flightIds: [],
     accommodationIds: [],
+    userId: null,
+    tripCreatedId: null,
   },
   states: {
     Idle: {
@@ -16,10 +18,6 @@ const chatMachine = createMachine({
         INIT: {
           target: 'WaitingForTripInfo',
           actions: 'initConversation',
-        },
-        MESSAGE: {
-          target: 'TripInfoCollected',
-          actions: 'saveMessage',
         },
       },
     },
@@ -50,7 +48,7 @@ const chatMachine = createMachine({
 
         onError: {
           target: 'WaitingForTripInfo',
-          actions: 'tellErrorMessage',
+          actions: ['tellErrorMessage', 'logError'],
         },
       },
     },
@@ -67,7 +65,7 @@ const chatMachine = createMachine({
         onError: [
           {
             target: 'WaitingForTripInfo',
-            actions: 'tellErrorMessage',
+            actions: ['tellErrorMessage', 'logError'],
           },
         ],
       },
@@ -100,7 +98,7 @@ const chatMachine = createMachine({
                 target: '#ChatPackerMachine.AccommodationAssistance.RequestingAssistance',
               },
             ],
-            onError: { target: 'RequestingAssistance', actions: 'tellErrorMessage' },
+            onError: { target: 'RequestingAssistance', actions: ['tellErrorMessage', 'logError'] },
           },
         },
 
@@ -113,7 +111,7 @@ const chatMachine = createMachine({
             },
             onError: {
               target: 'RequestingAssistance',
-              actions: 'tellErrorMessage',
+              actions: ['tellErrorMessage', 'logError'],
             },
           },
         },
@@ -141,7 +139,7 @@ const chatMachine = createMachine({
               },
               { target: '#ChatPackerMachine.FlightAssistance.Searching' },
             ],
-            onError: { target: 'WaitingForSelection', actions: 'tellErrorMessage' },
+            onError: { target: 'WaitingForSelection', actions: ['tellErrorMessage', 'logError'] },
           },
         },
       },
@@ -174,7 +172,7 @@ const chatMachine = createMachine({
                 target: '#ChatPackerMachine.SavingTrip',
               },
             ],
-            onError: { target: 'RequestingAssistance', actions: 'tellErrorMessage' },
+            onError: { target: 'RequestingAssistance', actions: ['tellErrorMessage', 'logError'] },
           },
         },
 
@@ -185,7 +183,7 @@ const chatMachine = createMachine({
             onDone: {
               target: 'WaitingForSelection',
             },
-            onError: { target: 'RequestingAssistance', actions: 'tellErrorMessage' },
+            onError: { target: 'RequestingAssistance', actions: ['tellErrorMessage', 'logError'] },
           },
         },
 
@@ -211,7 +209,7 @@ const chatMachine = createMachine({
               },
               { target: '#ChatPackerMachine.AccommodationAssistance.Searching' },
             ],
-            onError: { target: 'WaitingForSelection', actions: 'tellErrorMessage' },
+            onError: { target: 'WaitingForSelection', actions: ['tellErrorMessage', 'logError'] },
           },
         },
       },
@@ -224,10 +222,9 @@ const chatMachine = createMachine({
         onDone: [
           {
             target: 'EndOfConversation',
-            actions: 'tellTripCreated',
           },
         ],
-        onError: { target: 'EndOfConversation', actions: 'tellErrorService' },
+        onError: { target: 'EndOfConversation', actions: ['tellErrorService', 'logError'] },
       },
     },
 

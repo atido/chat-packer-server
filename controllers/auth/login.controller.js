@@ -22,6 +22,7 @@ async function login(req, res, next) {
         algorithm: 'HS256',
         expiresIn: '6h',
       });
+      console.log(req.session);
       //Check if a trip is waiting in session
       if (req.session.tripCreatedId) {
         await tripServiceInstance.attachTripToUser(req.session.tripCreatedId, foundUser._id);
