@@ -4,7 +4,7 @@ const AccommodationModel = require('../../models/Accommodation.model');
 
 class AccommodationService {
   constructor() {
-    this.url = process.env.MOCK && process.env.MOCK == 'true' ? process.env.MOCK_ACCOMMODATION_SERVICE_API_URL : process.env.ACCOMMODATION_SERVICE_API_URL;
+    this.url = process.env.MOCK_ACCOMMODATION && process.env.MOCK_ACCOMMODATION == 'true' ? process.env.MOCK_ACCOMMODATION_SERVICE_API_URL : process.env.ACCOMMODATION_SERVICE_API_URL;
     this.headers = {
       'X-RapidAPI-Key': process.env.ACCOMMODATION_SERVICE_API_ACCESSKEY,
       'X-RapidAPI-Host': process.env.ACCOMMODATION_SERVICE_API_HOST,

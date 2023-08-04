@@ -65,6 +65,7 @@ class ChatService {
     try {
       const response = await this.extractInfo(chatConfiguration.extractTripInfo, conversation);
       const jsonResponse = JSON.parse(response.content);
+      console.log('ExtractTripInfo:', response);
       return {
         entities: jsonResponse,
         isComplete: verifyObjectComplete(jsonResponse),
