@@ -19,6 +19,10 @@ const chatMachine = createMachine({
           target: 'WaitingForTripInfo',
           actions: 'initConversation',
         },
+        MESSAGE: {
+          target: 'TripInfoCollected',
+          actions: 'saveMessage',
+        },
       },
     },
     WaitingForTripInfo: {
