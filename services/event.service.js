@@ -144,7 +144,7 @@ class EventService {
       .onTransition(state => {
         console.log('Session ID :', sessionId, 'Current State:', state.value);
       });
-    if (initialEvent) service.send(initialEvent);
+    if (!(Object.keys(initialEvent).length === 0 && initialEvent.constructor === Object)) service.send(initialEvent);
 
     return await waitFor(service, state => state.hasTag('pause') || state.done, { timeout: msToWait });
   }

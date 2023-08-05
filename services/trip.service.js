@@ -46,11 +46,10 @@ class TripService {
   }
   async deleteTrip(tripId) {
     try {
-      return await this.mongooseService.delete( tripId );
+      return await this.mongooseService.delete(tripId);
     } catch (err) {
       throw err;
     }
   }
-  
 }
 module.exports = TripService;

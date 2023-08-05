@@ -14,11 +14,10 @@ const chatMachine = createMachine({
   },
   states: {
     Idle: {
-      on: {
-        INIT: {
-          target: 'WaitingForTripInfo',
-          actions: 'initConversation',
-        },
+      always: {
+        target: 'WaitingForTripInfo',
+        actions: 'initConversation',
+
         /*MESSAGE: {
           target: 'TripInfoCollected',
           actions: 'saveMessage',
