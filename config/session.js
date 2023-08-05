@@ -9,10 +9,10 @@ module.exports = app => {
     session({
       secret: process.env.JWT_TOKEN_SECRET,
       resave: true,
-      saveUninitialized: false,
+      saveUninitialized: true,
       cookie: {
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'lax' : 'lax',
+        secure: false,
         httpOnly: true,
         maxAge: Number(process.env.COOKIE_MAX_AGE) || 60000,
       },
