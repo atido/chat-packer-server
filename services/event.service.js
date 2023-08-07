@@ -15,11 +15,10 @@ class EventService {
     this.accommodationServiceInstance = new AccommodationService();
     this.tripServiceInstance = new TripService();
     this.chatServiceInstance = new ChatService();
-    this.stateMachine = chatMachine.withConfig({
+    this.chatMachine = chatMachine.withConfig({
       actions: {
         initConversation: (context, event) => {
-          if (!context.conversation.length)
-            initMessages.forEach(message => (context.conversation = addContentToConversation(context.conversation, this.chatServiceInstance.sendByAssistant(message), 'thread')));
+          initMessages.forEach(message => (context.conversation = addContentToConversation(context.conversation, this.chatServiceInstance.sendByAssistant(message), 'thread')));
         },
         saveMessage: (context, event) => {
           context.conversation = addContentToConversation(context.conversation, this.chatServiceInstance.sendByUser(event.message), 'thread');
@@ -119,8 +118,10 @@ class EventService {
 
   async events(event, session, userId) {
     try {
-      const stateDefinition = session.content.currentState || this.stateMachine.initialState;
-      const currentState = await this.asyncInterpret(session.id, this.stateMachine, 10_000, stateDefinition, event, userId);
+      // Get the machine and reset the context for further initialisation with session
+      const stateMachine = this.chatMachine.withContext({ tripInfo: null, conversation: [], flightIds: [], accommodationIds: [], userId: null, tripCreatedId: null });
+      const stateDefinition = session.content.currentState || stateMachine.initialState;
+      const currentState = await this.asyncInterpret(session.id, stateMachine, 10_000, stateDefinition, event, userId);
 
       if (currentState.done) {
         //add trip in session if there is one
@@ -132,21 +133,28 @@ class EventService {
       }
       return currentState.context.conversation;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
   async asyncInterpret(sessionId, machine, msToWait, initialStateDefinition, initialEvent, userId) {
     const previousState = State.create(initialStateDefinition);
     previousState.context.userId = userId;
+    // reset actions - bug xstate v4 / fixed on v5
+    previousState.actions = null;
 
+    //console.log('previousState', previousState);
     const service = interpret(machine)
       .start(previousState)
       .onTransition(state => {
         console.log('Session ID :', sessionId, 'Current State:', state.value);
       });
-    if (!(Object.keys(initialEvent).length === 0 && initialEvent.constructor === Object)) service.send(initialEvent);
-
-    return await waitFor(service, state => state.hasTag('pause') || state.done, { timeout: msToWait });
+    if (!(Object.keys(initialEvent).length === 0 && initialEvent.constructor === Object)) {
+      service.send(initialEvent);
+    }
+    const currentState = await waitFor(service, state => state.hasTag('pause') || state.done, { timeout: msToWait });
+    service.stop();
+    //console.log('currentState', currentState);
+    return currentState;
   }
 }
 

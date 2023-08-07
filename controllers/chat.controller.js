@@ -10,8 +10,7 @@ async function events(req, res, next) {
 
     return res.status(200).json(response);
   } catch (err) {
-    console.log(err);
-    throw next(err);
+    next(err);
   }
 }
 
