@@ -1,11 +1,10 @@
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const AuthValidator = require('../../validators/auth.validators');
-
 const UserService = require('../../services/user.service');
 const userServiceInstance = new UserService();
 const TripService = require('../../services/trip.service');
 const tripServiceInstance = new TripService();
+const { jwtSignUser } = require('../../utils/jwt');
 
 async function login(req, res, next) {
   const { email, password } = req.body;
@@ -16,12 +15,6 @@ async function login(req, res, next) {
   try {
     const foundUser = await userServiceInstance.getUserByEmail(email);
     if (foundUser && bcrypt.compareSync(password, foundUser.password)) {
-      const { _id, email, username, avatar } = foundUser;
-      const payload = { user: { _id, username, email, avatar } };
-      const authToken = jwt.sign(payload, process.env.JWT_TOKEN_SECRET, {
-        algorithm: 'HS256',
-        expiresIn: '6h',
-      });
       //Check if a trip is waiting in session
       if (req.session.tripCreatedId) {
         await tripServiceInstance.attachTripToUser(req.session.tripCreatedId, foundUser._id);
@@ -29,7 +22,8 @@ async function login(req, res, next) {
         req.session.tripCreatedId = null;
         req.session.currentState = null;
       }
-      return res.status(200).json({ authToken: authToken });
+
+      return res.status(200).json({ message: 'success login', authToken: jwtSignUser(foundUser) });
     } else {
       return res.status(401).json({ message: 'Unable to authenticate user' });
     }
