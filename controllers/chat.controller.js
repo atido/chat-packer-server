@@ -7,7 +7,7 @@ async function init(req, res, next) {
     const session = { id: req.sessionID, content: req.session };
     const response = await eventServiceInstance.events({ type: 'INIT' }, session, null);
 
-    console.log('Session ID output : ', res.sessionID);
+    console.log('Session ID output : ', req.sessionID);
     return res.status(200).json(response);
   } catch (err) {
     next(err);
@@ -21,7 +21,7 @@ async function events(req, res, next) {
     const session = { id: req.sessionID, content: req.session };
     const response = await eventServiceInstance.events(req.body, session, userId);
 
-    console.log('Session ID output : ', res.sessionID);
+    console.log('Session ID output : ', req.sessionID);
     return res.status(200).json(response);
   } catch (err) {
     next(err);
