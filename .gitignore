@@ -19,7 +19,7 @@ npm-debug.log
 Thumbs.db
 Thumbs.db:encryptable
 ehthumbs.db
-*.lnk
+*.lnkconver
 
 # VS Code
 .vscode/*
