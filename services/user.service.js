@@ -34,7 +34,7 @@ class UserService {
   }
   async updateUser(id, email, password, username) {
     try {
-      return await this.mongooseService.update(id, { email, password, username });
+      return await this.mongooseService.updateById(id, { email, password, username });
     } catch (err) {
       throw err;
     }
@@ -42,7 +42,7 @@ class UserService {
 
   async updateAvatar(id, avatar) {
     try {
-      return await this.mongooseService.update(id, { avatar });
+      return await this.mongooseService.updateById(id, { avatar });
     } catch (err) {
       throw err;
     }

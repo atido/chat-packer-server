@@ -39,7 +39,7 @@ class MongooseService {
     return this.model.findById(id).exec();
   }
 
-  update(id, body, options = { new: true }) {
+  updateById(id, body, options = { new: true }) {
     return this.model.findByIdAndUpdate(id, body, options).exec();
   }
 }

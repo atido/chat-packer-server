@@ -1,4 +1,4 @@
-const { getAuthTokenFromHeaders, getConversationTokenFromHeaders } = require('../utils/request');
+const { getAuthTokenFromHeaders, getConversationTokenFromHeaders, getSessionTokenFromHeaders } = require('../utils/request');
 const jwt = require('jsonwebtoken');
 
 function extractUser(req, res, next) {
@@ -11,8 +11,8 @@ function extractUser(req, res, next) {
   next();
 }
 
-function extractConversationToken(req, res, next) {
-  req.conversationToken = getConversationTokenFromHeaders(req);
+function extractSessionToken(req, res, next) {
+  req.sessionToken = getSessionTokenFromHeaders(req);
   next();
 }
-module.exports = { extractUser, extractConversationToken };
+module.exports = { extractUser, extractSessionToken };

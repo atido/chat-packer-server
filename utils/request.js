@@ -10,8 +10,8 @@ function getAuthTokenFromHeaders(req) {
 }
 
 // Function used to extract conversation token from the request's 'X-conversation-token' Headers
-function getConversationTokenFromHeaders(req) {
-  return req.headers['x-conversation-token'];
+function getSessionTokenFromHeaders(req) {
+  return req.headers['x-session-token'];
 }
 
-module.exports = { getAuthTokenFromHeaders, getConversationTokenFromHeaders };
+module.exports = { getAuthTokenFromHeaders, getSessionTokenFromHeaders };

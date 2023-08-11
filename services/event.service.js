@@ -2,6 +2,7 @@ const FlightService = require('./api/flight.service');
 const AccommodationService = require('./api/accommodation.service');
 const TripService = require('./trip.service');
 const ChatService = require('./api/chat.service');
+const SessionService = require('./session.service');
 const chatConfiguration = require('../config/chat.configuration');
 const { interpret, State } = require('xstate');
 const { waitFor } = require('xstate/lib/waitFor');
@@ -15,6 +16,7 @@ class EventService {
     this.accommodationServiceInstance = new AccommodationService();
     this.tripServiceInstance = new TripService();
     this.chatServiceInstance = new ChatService();
+    this.sessionServiceInstance = new SessionService();
     this.chatMachine = chatMachine.withConfig({
       actions: {
         initConversation: (context, event) => {
@@ -116,33 +118,45 @@ class EventService {
     });
   }
 
-  async events(event, session, userId) {
+  async events(event, sessionId, userId) {
     try {
       // Get the machine and reset the context for further initialisation with session
       const stateMachine = this.chatMachine.withContext({ tripInfo: null, conversation: [], flightIds: [], accommodationIds: [], userId: null, tripCreatedId: null });
-      const stateDefinition = session.content.currentState || stateMachine.initialState;
-      const currentState = await this.asyncInterpret(session.id, stateMachine, 10_000, stateDefinition, event, userId);
+
+      const session = await this.sessionServiceInstance.getSessionByIdOrCreate(sessionId);
+      let jsonContent = session.content ? JSON.parse(session.content) : null;
+
+      const stateDefinition = jsonContent?.currentState || stateMachine.initialState;
+      const currentState = await this.asyncInterpret(session._id, stateMachine, 10_000, stateDefinition, event, userId);
 
       if (currentState.done) {
-        //add trip in session if there is one
-        if (currentState.context.tripCreatedId) session.content.tripCreatedId = currentState.context.tripCreatedId;
         //remove state in session for next trip
-        session.content.currentState = null;
+        delete jsonContent.currentState;
+
+        //add trip in session if there is one
+        if (currentState.context.tripCreatedId) {
+          jsonContent = { ...jsonContent, tripCreatedId: currentState.context.tripCreatedId };
+        }
       } else {
-        session.content.currentState = currentState;
+        //add the current state in session
+        jsonContent = { ...jsonContent, currentState: currentState };
       }
-      return currentState.context.conversation;
+      // updated the session
+      session.content = JSON.stringify(jsonContent);
+      await this.sessionServiceInstance.updateSession(session._id, session.content);
+
+      return { sessionToken: session._id, conversation: currentState.context.conversation };
     } catch (err) {
       throw err;
     }
   }
+
   async asyncInterpret(sessionId, machine, msToWait, initialStateDefinition, initialEvent, userId) {
     const previousState = State.create(initialStateDefinition);
     previousState.context.userId = userId;
     // reset actions - bug xstate v4 / fixed on v5
     previousState.actions = null;
 
-    //console.log('previousState', previousState);
     const service = interpret(machine)
       .start(previousState)
       .onTransition(state => {
@@ -153,7 +167,7 @@ class EventService {
     }
     const currentState = await waitFor(service, state => state.hasTag('pause') || state.done, { timeout: msToWait });
     service.stop();
-    //console.log('currentState', currentState);
+
     return currentState;
   }
 }
