@@ -19,10 +19,13 @@ async function events(req, res, next) {
     //get the user from the middleware if present
     const userId = req.user ? req.user._id : null;
     const session = { id: req.sessionID, content: req.session };
-    const response = await eventServiceInstance.events(req.body, session, userId);
+    console.log('conversationToken:', req.conversationToken);
+    const conversationToken = req.conversationToken || req.sessionID;
+
+    const conversation = await eventServiceInstance.events(req.body, session, userId);
 
     console.log('Session ID output : ', req.sessionID);
-    return res.status(200).json(response);
+    return res.status(200).json({ token: conversationToken, conversation });
   } catch (err) {
     next(err);
   }
