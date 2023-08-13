@@ -58,7 +58,7 @@ class ChatService {
       ];
       const response = await this.askToChatGPT(configuration, chatMl);
       console.log('ExtractInfo:', response);
-      return res;
+      return response;
     } catch (err) {
       throw err;
     }
