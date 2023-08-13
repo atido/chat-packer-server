@@ -141,9 +141,8 @@ class EventService {
         //add the current state in session
         jsonContent = { ...jsonContent, currentState: currentState };
       }
-      // updated the session
-      session.content = JSON.stringify(jsonContent);
-      await this.sessionServiceInstance.updateSession(session._id, session.content);
+      // update the session
+      await this.sessionServiceInstance.updateSessionContent(session._id, JSON.stringify(jsonContent));
 
       return { sessionToken: session._id, conversation: currentState.context.conversation };
     } catch (err) {
@@ -162,6 +161,7 @@ class EventService {
       .onTransition(state => {
         console.log('Session ID :', sessionId, 'Current State:', state.value);
       });
+
     if (!(Object.keys(initialEvent).length === 0 && initialEvent.constructor === Object)) {
       service.send(initialEvent);
     }

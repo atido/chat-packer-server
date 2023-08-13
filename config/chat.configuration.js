@@ -7,7 +7,7 @@ const chatConfiguration = {
     maxTokens: 256,
   },
   extractTripInfo: {
-    systemMessage: `Your task is to extract the following "Entities" from the below "Conversation" between an agent and a customer. Response should follow the "Output Format". If some entities are missing provide null in the "Output Format"`,
+    systemMessage: `Your task is to extract the following "Entities" from the below "Conversation" between an agent and a customer. Response should be a json object and follow the "Output Format". If some entities are missing provide null in the "Output Format"`,
     temperature: 0,
     maxTokens: 100,
     inputType: 'Conversation',

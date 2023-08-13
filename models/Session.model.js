@@ -2,8 +2,10 @@ const { Schema, model } = require('mongoose');
 
 const sessionSchema = new Schema({
   content: { type: String },
-  expires: { type: Date, expires: 7200 },
+  expireAt: { type: Date, default: () => Date.now() + 10 * 60 * 1000 },
 });
+// remove session at expireAt date
+sessionSchema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 
 const Session = model('Session', sessionSchema);
 

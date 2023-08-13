@@ -6,12 +6,13 @@ const UserController = require('../controllers/user.controller');
 
 const fileUploader = require('../config/cloudinary.configuration');
 const { isAuthenticated } = require('../middleware/jwt.middleware');
+const { extractSessionToken } = require('../middleware/user.middleware');
 
 // POST /users  - Creates a new user in the database
-router.post('/users/register', SignupController.createSignup);
+router.post('/users/register', extractSessionToken, SignupController.createSignup);
 
 // POST  /sessions - Verifies email and password and returns a JWT
-router.post('/users/login', LoginController.login);
+router.post('/users/login', extractSessionToken, LoginController.login);
 
 // GET  /user - Get user based on authent token
 router.get('/user', isAuthenticated, UserController.getUser);

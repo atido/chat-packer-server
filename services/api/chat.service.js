@@ -56,7 +56,9 @@ class ChatService {
         ${configuration.entities ?? ''}`,
         },
       ];
-      return await this.askToChatGPT(configuration, chatMl);
+      const response = await this.askToChatGPT(configuration, chatMl);
+      console.log('ExtractInfo:', response);
+      return res;
     } catch (err) {
       throw err;
     }
@@ -65,7 +67,6 @@ class ChatService {
     try {
       const response = await this.extractInfo(chatConfiguration.extractTripInfo, conversation);
       const jsonResponse = JSON.parse(response.content);
-      console.log('ExtractTripInfo:', response);
       return {
         entities: jsonResponse,
         isComplete: verifyObjectComplete(jsonResponse),
