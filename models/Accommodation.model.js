@@ -1,6 +1,6 @@
-const priceSchema = require("./price.schema");
+const priceSchema = require('./price.schema');
 
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const accommodationSchema = new Schema(
   {
@@ -8,6 +8,7 @@ const accommodationSchema = new Schema(
     name: { type: String, required: true },
     url: { type: String },
     city: { type: String, required: true },
+    coordinates: { latitude: { type: Number }, longitude: { type: Number } },
     rating: { type: Number },
     amenities: [{ type: String }],
     images: [{ type: String }],
@@ -17,6 +18,6 @@ const accommodationSchema = new Schema(
   { versionKey: false }
 );
 
-const Accommodation = model("Accommodation", accommodationSchema);
+const Accommodation = model('Accommodation', accommodationSchema);
 
 module.exports = Accommodation;
