@@ -1,6 +1,6 @@
-const priceSchema = require("./price.schema");
+const priceSchema = require('./price.schema');
 
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const airportDateSchema = new Schema({
   date: { type: Date, required: true, trim: true },
@@ -8,7 +8,7 @@ const airportDateSchema = new Schema({
 });
 
 const airportSchema = new Schema({
-  code: { type: String, required: true, trim: true },
+  city: { type: String, required: true, trim: true },
   name: { type: String, required: true, trim: true },
   displayCode: { type: String, required: true, trim: true },
 });
@@ -36,6 +36,6 @@ const flightSchema = new Schema(
   { versionKey: false }
 );
 
-const Flight = model("Flight", flightSchema);
+const Flight = model('Flight', flightSchema);
 
 module.exports = Flight;

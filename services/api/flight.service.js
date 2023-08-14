@@ -1,41 +1,19 @@
-const FlightDTO = require('../../dto/flight.dto');
 const MongooseService = require('../mongoose.service');
 const FlightModel = require('../../models/Flight.model');
+const SkyscannerFlightAdapter = require('../../adapter/flight/skyscannerFlight.adapter');
+const AmadeusFlightAdapter = require('../../adapter/flight/amadeusFlight.adapter');
 
 class FlightService {
   constructor() {
-    this.url = process.env.MOCK_FLIGHT && process.env.MOCK_FLIGHT == 'true' ? process.env.MOCK_FLIGHT_SERVICE_API_URL : process.env.FLIGHT_SERVICE_API_URL;
-    this.headers = {
-      'X-RapidAPI-Key': process.env.FLIGHT_SERVICE_API_ACCESSKEY,
-      'X-RapidAPI-Host': process.env.FLIGHT_SERVICE_API_HOST,
-    };
+    //this.flightApiAdapter = new SkyscannerFlightAdapter();
+    this.flightApiAdapter = new AmadeusFlightAdapter();
     this.mongooseService = new MongooseService(FlightModel);
   }
 
   async searchFlights(adultsNb, originIATA, destinationIATA, departureDate, returnDate) {
     try {
-      const fullUrl = `${this.url}?${new URLSearchParams({
-        adults: adultsNb,
-        origin: originIATA,
-        destination: destinationIATA,
-        departureDate,
-        returnDate,
-        adults: adultsNb,
-        currency: 'EUR',
-        market: 'FR',
-      })}`;
-      const options = {
-        method: 'GET',
-        headers: this.headers,
-      };
-
-      let result = await fetch(fullUrl, options);
-      await new Promise(resolve => {
-        setTimeout(resolve, process.env.FLIGHT_SERVICE_WAITING_TIME);
-      });
-      result = await fetch(fullUrl, options);
-      const resultJson = await result.json();
-      const flights = resultJson.itineraries.buckets.map(itineraryFromApi => new FlightDTO(itineraryFromApi.items[0], itineraryFromApi.id));
+      const flightsFromApi = await this.flightApiAdapter.searchFlights(adultsNb, originIATA, destinationIATA, departureDate, returnDate);
+      const flights = this.flightApiAdapter.adaptFlights(flightsFromApi);
 
       await Promise.all(
         flights.map(async flight => {
