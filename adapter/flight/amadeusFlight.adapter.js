@@ -6,7 +6,7 @@ class AmadeusFlightAdapter {
     this.amadeusApi = new Amadeus({
       clientId: process.env.FLIGHT_SERVICE_AMADEUS_API_ACCESSKEY,
       clientSecret: process.env.FLIGHT_SERVICE_AMADEUS_API_SECRET,
-      hostmane: process.FLIGHT_SERVICE_AMADEUS_ENV,
+      hostname: process.env.FLIGHT_SERVICE_AMADEUS_ENV,
     });
   }
   async searchFlights(adultsNb, originIATA, destinationIATA, departureDate, returnDate) {
