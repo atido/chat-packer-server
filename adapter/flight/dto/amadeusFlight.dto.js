@@ -9,12 +9,11 @@ class AmadeusFlightDTO {
 
     const secondItinerary = flightItemFromApi.itineraries[1];
     const lastSegmentSecondItinerary = secondItinerary.segments[secondItinerary.segments.length - 1];
-    const secondSegmentSecondItinerary = secondItinerary.segments[1];
 
     this.apiId = `${extractYearMonthDay(firstSegmentFirstItinerary.departure.at)}-${extractYearMonthDay(lastSegmentSecondItinerary.arrival.at)}-${firstItinerary.duration}-${
       secondItinerary.duration
     }-${firstSegmentFirstItinerary.carrierCode}-${firstSegmentFirstItinerary.departure.iataCode}-${lastSegmentFirstItinerary.arrival.iataCode}-${firstSegmentFirstItinerary.number}-${
-      secondSegmentSecondItinerary.number
+      lastSegmentSecondItinerary.number
     }`;
     this.price = {
       total: flightItemFromApi.price.total,

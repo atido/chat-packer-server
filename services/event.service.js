@@ -127,7 +127,7 @@ class EventService {
       let jsonContent = session.content ? JSON.parse(session.content) : null;
 
       const stateDefinition = jsonContent?.currentState || stateMachine.initialState;
-      const currentState = await this.asyncInterpret(session._id, stateMachine, 10_000, stateDefinition, event, userId);
+      const currentState = await this.asyncInterpret(session._id, stateMachine, 20_000, stateDefinition, event, userId);
 
       if (currentState.done) {
         //remove state in session for next trip
