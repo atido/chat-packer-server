@@ -13,7 +13,7 @@ const cookieParser = require('cookie-parser');
 // unless the request if from the same domain, by default express wont accept POST requests
 const cors = require('cors');
 
-const FRONTEND_URLS = [process.env.REMOTE_ORIGIN, process.env.LOCAL_ORIGIN, '/chat-packer.netlify.app$/' || 'http://localhost:8000'];
+const FRONTEND_URLS = [process.env.REMOTE_ORIGIN, process.env.LOCAL_ORIGIN, /chat-packer.netlify.app$/ || 'http://localhost:8000'];
 
 console.log('FRONTEND_URLS >> ', FRONTEND_URLS);
 
