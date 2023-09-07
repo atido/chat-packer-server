@@ -27,7 +27,15 @@ class AmadeusFlightAdapter {
     }
   }
   adaptFlights(flightsFromApi) {
-    return flightsFromApi.map(flightFromApi => new AmadeusFlightDTO(flightFromApi));
+    const uniquePrices = {};
+    const uniqueFlights = flightsFromApi.filter(item => {
+      if (!uniquePrices[item.price.total]) {
+        uniquePrices[item.price.total] = true;
+        return true;
+      }
+      return false;
+    });
+    return uniqueFlights.slice(0,5).map(flightFromApi => new AmadeusFlightDTO(flightFromApi));
   }
 }
 module.exports = AmadeusFlightAdapter;

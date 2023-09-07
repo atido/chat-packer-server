@@ -21,9 +21,9 @@ function extractYearMonthDay(dateString) {
 }
 
 function parseDurationISO8601(durationString) {
-  return durationString.replace(/PT(\d+)H(\d+)M/, (_, hours, minutes) => {
+  return durationString.replace(/PT(\d+)H(?:(\d+)M)?/, (_, hours, minutes) => {
     const formattedHours = hours.padStart(2, '0');
-    const formattedMinutes = minutes.padStart(2, '0');
+    const formattedMinutes = minutes ? minutes.padStart(2, '0') : '00';
     return `${formattedHours}h${formattedMinutes}`;
   });
 }
