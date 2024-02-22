@@ -15,8 +15,8 @@ const chatConfiguration = {
     departureCityIATA: This is the city where the trip will begin. Convert it to the IATA code.
     destinationCity: This is the city where the trip will end.
     destinationCityIATA: This is the city where the trip will end. Convert it to the IATA code.
-    departureDate:  start date of the trip, format in YYYY-MM-DD, default year is 2023
-    returnDate:  end date of the trip, format in YYYY-MM-DD, default year is 2023
+    departureDate:  start date of the trip, format in YYYY-MM-DD, default year is 2024
+    returnDate:  end date of the trip, format in YYYY-MM-DD, default year is 2024
     adultsNb: number of passengers
 
 Output Format: {"departureCity":<departure city as a string>,"destinationCity":<destination city as a string>,"departureCityIATA": <IATA code of the departure city>, "destinationCityIATA" : <IATA code of the destination city>, "departureDate":<departure date or start date>,"returnDate":<return date or end date>,"adultsNb":<number of passengers in digits>}`,
