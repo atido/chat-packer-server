@@ -39,7 +39,7 @@ Output Format: {"departureCity":<departure city as a string>,"destinationCity":<
     systemMessage: 'Perfect ! Would you like me to help you find the perfect accommodations for your trip?',
   },
   askForSelection: {
-    systemMessage: 'Please let me know which option would be most suitable for you?',
+    systemMessage: 'Please let me know which option would be most suitable for you? Please indicate the option number ex. 1 / 2 / 3 / 4',
   },
   tellTripCreated: {
     systemMessage: 'Great ! Everything is ready ✅ Thank you for using our service 🙏 Your trip has been saved to your account ! Enjoy your hollidays ☀️ 🏄‍♂️ 🏖️ ',
